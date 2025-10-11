@@ -3,9 +3,12 @@
 import json
 from noaa_sdk import NOAA
 
+zip = '39503'
+country = 'US'
+
 n = NOAA()
 observation = {}
-observations = n.get_observations('39503','US')
+observations = n.get_observations(zip, country)
 for item in observations:
     observation = item
     print(json.dumps(observation, indent=4))
@@ -36,9 +39,11 @@ print(f"relative humidity: {relativeHumidity['value']}")
 print(f"dewpoint: {dewpoint['value']}")
 
 
+zip = '83221'
+
 n = NOAA()
 observation = {}
-observations = n.get_observations('83221','US')
+observations = n.get_observations(zip, country)
 for item in observations:
     observation = item
     print(json.dumps(observation, indent=4))
@@ -54,7 +59,11 @@ for key, value in observation.items():
         relativeHumidity = value
     elif key == "barometricPressure":
         barometricPressure = value
-        #print(json.dumps(value, indent=4))
+        if barometricPressure:
+            barometricPressure['value'] = str(float(barometricPressure['value'])/100)
+        else:
+            barometricPressure = None
+        print(json.dumps(value, indent=4))
     elif key == "dewpoint":
         dewpoint = value
     elif key == "temperature":
@@ -64,7 +73,7 @@ for key, value in observation.items():
 
 
 print(f"temperature: {temperature['value']}")
-print(f"barometric pressure: {barometricPressure['value']}")
+print(f"barometric pressure: {float(barometricPressure['value']):.5f}")
 print(f"relative humidity: {relativeHumidity['value']}")
 print(f"dewpoint: {dewpoint['value']}")
 
