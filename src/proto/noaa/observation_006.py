@@ -29,7 +29,7 @@ class noaa_job():
             # print(json.dumps(observation, indent=4))
             #break
             i += 1
-        print(json.dumps(observation, indent=4))
+        # print(json.dumps(observation, indent=4))
         return observation
 
 
