@@ -1,5 +1,7 @@
 #!/usr/bin/env -S python -u
 
+import faulthandler
+
 import json
 from noaa_sdk import NOAA
 
@@ -159,10 +161,10 @@ class MainWindow(QMainWindow):
             if value[x]:
                 temperature = str(round(int(value[x]['value'])*9/5+32)) 
                 data.append(f"{temperature}")            
-                i += 1
                 time.append(i)
+                i += 1
                 print(f"{x}: {i}: {temperature}")
-                if i == 20:
+                if i == 10:
                     break
                
         self.graphWidget.setBackground('w')
@@ -173,6 +175,10 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
 
     import argparse
+
+    #####
+    # Enable traceback on segmentation fault...
+    faulthandler.enable()
 
     parser = argparse.ArgumentParser(description="A simple script to demonstrate argparse.")
     parser.add_argument("-z", "--zipcode", default="00000", help="zipcode to gather data on")
