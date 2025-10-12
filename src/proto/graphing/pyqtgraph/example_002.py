@@ -25,7 +25,8 @@ class noaa_job():
 
     def basic_vals(self, pzip, country):
         
-        observation = self.singleshot(pzip, country)    
+        :q!
+observation = self.singleshot(pzip, country)    
 
         relativeHumidity = {}
         barometricPressure = {}
@@ -77,6 +78,11 @@ class MainWindow(QMainWindow):
 
         pen = pg.mkPen(color=(255, 0, 0))
         self.graphWidget.plot(hour, temperature, pen=pen)
+
+    def gettemps(self):
+        
+
+
 
 
 if __name__ == "__main__":
