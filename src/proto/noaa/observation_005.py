@@ -39,7 +39,7 @@ class noaa_job():
                     barometricPressure['value'] = str(float(barometricPressure['value'])/100)
                 else:
                     barometricPressure = None
-                print(json.dumps(value, indent=4))
+                # print(json.dumps(value, indent=4))
             elif key == "dewpoint":
                 dewpoint = value
             elif key == "temperature":
@@ -58,16 +58,18 @@ class noaa_job():
         print(f"dewpoint: {dewpoint['value']}")
 
 
-njob = noaa_job()
+if __name__ == "__main__":
 
-njob.basic_vals('39503', 'US')
+    import argparse
 
+    parser = argparse.ArgumentParser(description="A simple script to demonstrate argparse.")
+    parser.add_argument("-z", "--zipcode", default="00000", help="zipcode to gather data on")
+    parser.add_argument("-c", "--country", default='US', help="country to gather data on")
 
+    args = parser.parse_args()
 
-    
-'''
-relativeHumidity
-barometricPressure
-dewpoint
-temperature
-'''
+    njob = noaa_job()
+
+    # njob.basic_vals('39503', 'US')
+    njob.basic_vals(args.zipcode, args.country)
+
