@@ -153,7 +153,7 @@ class MainWindow(QMainWindow):
 
         data = []
         time = []
-        i = 0
+        i = 1
         # time.append(i)
         for key, value in observations.items():
             # print(f"{x}: {json.dumps(value[x], indent=4)}")
@@ -162,10 +162,10 @@ class MainWindow(QMainWindow):
                 temperature = str(round(int(value[x]['value'])*9/5+32)) 
                 data.append(f"{temperature}")            
                 time.append(i)
-                i += 1
-                print(f"{x}: {i}: {temperature}")
-                if i == 10:
+                if i == 4:
                     break
+                print(f"{x}: {i}: {temperature}")
+                i += 1
                
         self.graphWidget.setBackground('w')
         pen = pg.mkPen(color=(255, 0, 0))
