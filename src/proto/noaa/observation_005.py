@@ -21,7 +21,7 @@ class noaa_job():
             break
         return observation
 
-    def basic_vals(self, pzip, country):
+    def basic_vals(self, pzip, country, printErr=False):
         
         observation = self.singleshot(pzip, country)    
 
@@ -78,7 +78,7 @@ class noaa_job():
         try:
             print(f"barometric pressure: {float(barometricPressure['value']):.5f}")
         except TypeErr as err:
-            if printErr as err:
+            if printErr:
                 print(traceback.format_exc())
                 print(str(err))
         
