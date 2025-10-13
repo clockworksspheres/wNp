@@ -2,6 +2,8 @@
 
 import json
 from noaa_sdk import NOAA
+import faulthandler
+import traceback
 
 pzip = '83221'
 country = 'US'
@@ -33,7 +35,7 @@ class noaa_job():
         return observation
 
 
-    def basic_vals(self, pzip, country):
+    def basic_vals(self, pzip, country, printErr=False):
         
         observation = self.singleshot(pzip, country)    
 
@@ -46,22 +48,46 @@ class noaa_job():
 
         for key, value in observation.items():
             if key == "relativeHumidity":
-                relativeHumidity = value
+                try:
+                    relativeHumidity = value
+                except TypeError as err:
+                    if printErr:
+                        print(traceback.format_exc())
+                        print(str(err))
+
             elif key == "barometricPressure":
-                barometricPressure = value
-                if barometricPressure:
-                    barometricPressure['value'] = str(float(barometricPressure['value'])/100)
-                else:
-                    barometricPressure = None
-                # print(json.dumps(value, indent=4))
+                try:
+                    barometricPressure = value
+                    if barometricPressure and barometricPressure is not None:
+                        barometricPressure['value'] = str(float(barometricPressure['value'])/100)
+                    else:
+                        barometricPressure = None
+                    # print(json.dumps(value, indent=4))
+                except TypeError as err:
+                    if printErr:
+                        print(traceback.format_exc())
+                        print(str(err))
+
             elif key == "dewpoint":
-                dewpoint = value
+                try:
+                    dewpoint = value
+                except TypeError as err:
+                    if printErr:
+                        print(traceback.format_exc())
+                        print(str(err))
+
             elif key == "temperature":
-                temperature = value
-                if temperature:
-                    temperature['value'] = str(round(int(temperature['value'])*9/5+32))
-                else:
-                    temperature = None
+                try:
+                    temperature = value
+                    if temperature:
+                        temperature['value'] = str(round(int(temperature['value'])*9/5+32))
+                    else:
+                        temperature = None
+                except TypeError as err:
+                    if printErr:
+                        print(traceback.format_exc())
+                        print(str(err))
+
             else:
                 continue
 
@@ -70,7 +96,7 @@ class noaa_job():
         print(f"relative humidity: {relativeHumidity['value']}")
         print(f"dewpoint: {dewpoint['value']}")
 
-    def fordays_vals(self, pzip, country):
+    def fordays_vals(self, pzip, country, printErr=False):
         
         observation = self.fordays(pzip, country)    
 
@@ -96,34 +122,77 @@ class noaa_job():
             for key, value in values.items():
                 # print(value)
                 if key == "relativeHumidity":
-                    relativeHumidity = value
+                    try:
+                        relativeHumidity = value
+                    except TypeError as err:
+                        if printErr:
+                            print(traceback.format_exc())
+                            print(str(err))
+
                 elif key == "barometricPressure":
-                    barometricPressure = value
-                    if barometricPressure:
-                        barometricPressure['value'] = str(float(barometricPressure['value'])/100)
-                    else:
-                        barometricPressure = None
-                    # print(json.dumps(value, indent=4))
+                    try:
+                        barometricPressure = value
+                        if barometricPressure:
+                            barometricPressure['value'] = str(float(barometricPressure['value'])/100)
+                        else:
+                            barometricPressure = None
+                        # print(json.dumps(value, indent=4))
+                    except TypeError as err:
+                        if printErr:
+                            print(traceback.format_exc())
+                            print(str(err))
+
+
                 elif key == "dewpoint":
-                    dewpoint = value
+                    try:
+                        dewpoint = value
+                    except TypeError as err:
+                        if printErr:
+                            print(traceback.format_exc())
+                            print(str(err))
+
+                elif key == "dewpoint":
+                    try:
+                        dewpoint = value
+                    except TypeError as err:
+                        if printErr:
+                            print(traceback.format_exc())
+                            print(str(err))
+
                 elif key == "temperature":
-                    temperature = value
-                    if temperature:
-                        temperature['value'] = str(round(int(temperature['value'])*9/5+32))
-                    else:
-                        temperature = None
+                    try:
+                        temperature = value
+                        if temperature:
+                            temperature['value'] = str(round(int(temperature['value'])*9/5+32))
+                        else:
+                            temperature = None
+                    except TypeError as err:
+                        if printErr:
+                            print(traceback.format_exc())
+                            print(str(err))
+
                 else:
                     continue
 
+            print("{")
             print(f"temperature: {temperature['value']}")
-            print(f"barometric pressure: {float(barometricPressure['value']):.5f}")
+            try:
+                print(f"barometric pressure: {float(barometricPressure['value']):.5f}")
+            except TypeError as err:
+                if printErr:
+                    print(traceback.format_exc())
+                    print(str(err))
             print(f"relative humidity: {relativeHumidity['value']}")
             print(f"dewpoint: {dewpoint['value']}")
+            print("}")
 
 
 if __name__ == "__main__":
 
     import argparse
+    #####
+    # Enable traceback on segmentation fault...
+    faulthandler.enable()
 
     parser = argparse.ArgumentParser(description="A simple script to demonstrate argparse.")
     parser.add_argument("-z", "--zipcode", default="00000", help="zipcode to gather data on")
