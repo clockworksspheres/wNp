@@ -53,6 +53,7 @@ relativeHumidity = {}
 barometricPressure = {}
 dewpoint = {}
 temperature = {}
+timestamp = ""
 
 for key, value in observation.items():
     if key == "relativeHumidity":
@@ -72,10 +73,15 @@ for key, value in observation.items():
             temperature['value'] = str(round(int(temperature['value'])*9/5+32))
         else:
             temperature = None
+    elif key == "timestamp":
+        timestamp = value.split("T")[-1]
+        hour = timestamp.split(":")[0]
+        minute = timestamp.split(":")[1]
+        timestamp = f"{int(hour)-5}:{minute}"
     else:
         continue
 
-
+print(f"timestamp: {timestamp}")
 print(f"temperature: {temperature['value']}")
 print(f"barometric pressure: {float(barometricPressure['value']):.5f}")
 print(f"relative humidity: {relativeHumidity['value']}")

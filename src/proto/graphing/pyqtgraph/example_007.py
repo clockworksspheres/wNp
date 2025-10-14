@@ -153,7 +153,7 @@ class MainWindow(QMainWindow):
         '''
         #self.graph_item('temperature')
 
-    def graph_item(self, x, pzip, country='US', samples=20):
+    def graph_item(self, x, pzip, country='US', samples=20, timestamp=False):
 
         observations = self.njob.fordays(pzip)
         # print(x)
@@ -166,8 +166,11 @@ class MainWindow(QMainWindow):
             # print(f"{x}: {json.dumps(value[x], indent=4)}")
             # break
             if value[x]:
-                #temperature = str(round(int(value[x]['value'])*9/5+32)) 
-                temperature = round(int(value[x]['value'])*9/5+32)
+                # temperature = round(int(value[x]['value'])*9/5+32)
+                if timestamp:
+                    thedata = value['timestamp']
+                else:
+                    thedata = value[x]['value']
                 data.append(temperature)
                 wtime.append(i)            
                 print(f"{x}: {i}: {temperature}")
@@ -192,7 +195,7 @@ if __name__ == "__main__":
     parser.add_argument("-z", "--zipcode", default="83221", help="zipcode to gather data on")
     parser.add_argument("-c", "--country", default='US', help="country to gather data on")
     parser.add_argument("-s", "--samples", default='20', help="number of samples to chart")
-    parser.add_argument("-T", "--timestamp", default='20', help="timestamp")
+    parser.add_argument("-T", "--timestamp", default=False, help="timestamp")
     parser.add_argument("-t", "--tag", default='temperature', help="tag to plot - one of ['temperature', 'barometricPressure', 'relativeHumidity', 'dewpoint']")
     args = parser.parse_args()
 
@@ -201,9 +204,12 @@ if __name__ == "__main__":
     # njob.basic_vals('39503', 'US')
     # njob.fordays_vals(args.zipcode, args.country)
 
+    if args.timestamp:
+        timestamp = True
+
     app = QApplication(sys.argv)
     main = MainWindow()
-    main.graph_item(args.tag, args.zipcode, args.country, args.samples)
+    main.graph_item(args.tag, args.zipcode, args.country, args.samples, timestamp)
     main.show()
     app.exec()
 
