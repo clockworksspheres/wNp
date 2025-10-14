@@ -10,16 +10,18 @@ pushd ..
 directory="./packenv"
 actfile="./packenv/bin/activate"
 if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
-   python3 -m venv packenv
+   python -m venv packenv
    source packenv/bin/activate
 
    pip install --upgrade pip
    pip install noaa-sdk
-   pip3 install PySide6 PyInstaller
-   pip3 install --upgrade PyInstaller pyinstaller-hooks-contrib
-   pip install psutil
-   pip install sphynx  # documentation tool
-   pip install myst-parser # supports markdown for sphynx
+   pip install pyqtgraph
+   pip install PySide6
+   #pip install PyInstaller
+   #pip3 install --upgrade PyInstaller pyinstaller-hooks-contrib
+   #pip install psutil
+   #pip install sphynx  # documentation tool
+   #pip install myst-parser # supports markdown for sphynx
 else
    source packenv/bin/activate
 fi

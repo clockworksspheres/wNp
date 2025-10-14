@@ -144,32 +144,33 @@ class MainWindow(QMainWindow):
         pen = pg.mkPen(color=(255, 0, 0))
         self.graphWidget.plot(hour, temperature, pen=pen)
         '''
-        self.graph_item('temperature')
+        #self.graph_item('temperature')
 
-    def graph_item(self, x):
+    def graph_item(self, x, pzip, country='US'):
 
-        observations = self.njob.fordays('39503')
+        observations = self.njob.fordays(pzip)
         # print(x)
 
         data = []
-        time = []
-        i = 1
-        # time.append(i)
+        wtime = []
+        i = 0
+        # wtime.append(i)
         for key, value in observations.items():
             # print(f"{x}: {json.dumps(value[x], indent=4)}")
             # break
             if value[x]:
-                temperature = str(round(int(value[x]['value'])*9/5+32)) 
-                data.append(f"{temperature}")            
-                time.append(i)
+                #temperature = str(round(int(value[x]['value'])*9/5+32)) 
+                temperature = round(int(value[x]['value'])*9/5+32)
+                data.append(temperature)
+                wtime.append(i)            
+                print(f"{x}: {i}: {temperature}")
                 if i == 4:
                     break
-                print(f"{x}: {i}: {temperature}")
                 i += 1
                
         self.graphWidget.setBackground('w')
         pen = pg.mkPen(color=(255, 0, 0))
-        self.graphWidget.plot(time, data, pen=pen)
+        self.graphWidget.plot(wtime, data, pen=pen)
         
 
 if __name__ == "__main__":
@@ -192,6 +193,7 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     main = MainWindow()
+    main.graph_item('temperature', args.zipcode, args.country)
     main.show()
     app.exec()
 
