@@ -4,7 +4,7 @@ import faulthandler
 import traceback
 import sys
 import json
-
+from collections import OrderedDict
 
 #####
 # Graphics libraries
@@ -34,7 +34,7 @@ class noaa_job():
 
     def fordays(self, pzip, country='US'):
         i = 1
-        observation = {}
+        observation = OrderedDict()
         observations = self.n.get_observations(pzip, country)
         for item in observations:
             tmp = {i : item}
@@ -153,7 +153,7 @@ class MainWindow(QMainWindow):
         '''
         #self.graph_item('temperature')
 
-    def graph_item(self, x, pzip, country='US'):
+    def graph_item(self, x, pzip, country='US', samples=20):
 
         observations = self.njob.fordays(pzip)
         # print(x)
@@ -171,7 +171,7 @@ class MainWindow(QMainWindow):
                 data.append(temperature)
                 wtime.append(i)            
                 print(f"{x}: {i}: {temperature}")
-                if i == 4:
+                if i == int(samples):
                     break
                 i += 1
                
@@ -191,6 +191,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="A simple script to demonstrate argparse.")
     parser.add_argument("-z", "--zipcode", default="83221", help="zipcode to gather data on")
     parser.add_argument("-c", "--country", default='US', help="country to gather data on")
+    parser.add_argument("-s", "--samples", default='20', help="number of samples to chart")
     parser.add_argument("-t", "--tag", default='temperature', help="tag to plot - one of ['temperature', 'barometricPressure', 'relativeHumidity', 'dewpoint']")
     args = parser.parse_args()
 
@@ -201,7 +202,7 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     main = MainWindow()
-    main.graph_item(args.tag, args.zipcode, args.country)
+    main.graph_item(args.tag, args.zipcode, args.country, args.samples)
     main.show()
     app.exec()
 
