@@ -78,6 +78,11 @@ class MainWindow(QMainWindow):
         pen = pg.mkPen(color=(255, 0, 0))
         self.graphWidget.plot(hour, temperature, pen=pen)
 
+    # def gettemps(self):
+        
+
+
+
 
 if __name__ == "__main__":
 
