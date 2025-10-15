@@ -4,8 +4,6 @@ import json
 from noaa_sdk import NOAA
 
 
-
-
 def doit():
 
     n = NOAA()
@@ -31,4 +29,5 @@ def doit():
 stuff = doit()
 
 print(f"{json.dumps(stuff, indent=4)}")
+
 
