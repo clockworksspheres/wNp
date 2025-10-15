@@ -77,7 +77,7 @@ for key, value in observation.items():
         timestamp = value.split("T")[-1]
         hour = timestamp.split(":")[0]
         minute = timestamp.split(":")[1]
-        timestamp = f"{int(hour)-5}:{minute}"
+        timestamp = f"{int(hour)-5}{minute}"
     else:
         continue
 

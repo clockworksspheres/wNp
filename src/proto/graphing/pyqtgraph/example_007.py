@@ -113,7 +113,7 @@ class noaa_job():
                 elif key == "barometricPressure":
                     barometricPressure = value
                     if barometricPressure:
-                        barometricPressure['value'] = str(float(barometricPressure['value'])/100)
+                        barometricPressure['value'] = float(barometricPressure['value'])/100
                     else:
                         barometricPressure = None
                     # print(json.dumps(value, indent=4))
@@ -122,9 +122,14 @@ class noaa_job():
                 elif key == "temperature":
                     temperature = value
                     if temperature:
-                        temperature['value'] = str(round(int(temperature['value'])*9/5+32))
+                        temperature['value'] = round(int(temperature['value'])*9/5+32)
                     else:
                         temperature = None
+                elif key == "timestamp":
+                    timestamp = value.split("T")[-1]
+                    hour = timestamp.split(":")[0]
+                    minute = timestamp.split(":")[1]
+                    timestamp = f"{int(hour)-5}{minute}"
                 else:
                     continue
 
@@ -163,17 +168,21 @@ class MainWindow(QMainWindow):
         i = 0
         # wtime.append(i)
         for key, value in observations.items():
-            # print(f"{x}: {json.dumps(value[x], indent=4)}")
+            print(f"{x}: {json.dumps(value[x], indent=4)}")
             # break
             if value[x]:
+                '''
                 # temperature = round(int(value[x]['value'])*9/5+32)
-                if timestamp:
-                    thedata = value['timestamp']
+                if x == 'temperature':
+                    temperature = round(int(value[x]['value'])*9/5+32)
+                    print(f"temp: {temperature}")
+                    data.append(temperature)
                 else:
-                    thedata = value[x]['value']
-                data.append(temperature)
-                wtime.append(i)            
-                print(f"{x}: {i}: {temperature}")
+                '''
+                thedata = value[x]['value']
+                data.append(thedata)
+                wtime.append(i)
+                print(f"{x}: {i}: {thedata}")
                 if i == int(samples):
                     break
                 i += 1
@@ -195,7 +204,7 @@ if __name__ == "__main__":
     parser.add_argument("-z", "--zipcode", default="83221", help="zipcode to gather data on")
     parser.add_argument("-c", "--country", default='US', help="country to gather data on")
     parser.add_argument("-s", "--samples", default='20', help="number of samples to chart")
-    parser.add_argument("-T", "--timestamp", default=False, help="timestamp")
+    parser.add_argument("-T", "--timestamp", action='store_true', default=False, help="timestamp")
     parser.add_argument("-t", "--tag", default='temperature', help="tag to plot - one of ['temperature', 'barometricPressure', 'relativeHumidity', 'dewpoint']")
     args = parser.parse_args()
 
@@ -204,12 +213,9 @@ if __name__ == "__main__":
     # njob.basic_vals('39503', 'US')
     # njob.fordays_vals(args.zipcode, args.country)
 
-    if args.timestamp:
-        timestamp = True
-
     app = QApplication(sys.argv)
     main = MainWindow()
-    main.graph_item(args.tag, args.zipcode, args.country, args.samples, timestamp)
+    main.graph_item(args.tag, args.zipcode, args.country, args.samples, args.timestamp)
     main.show()
     app.exec()
 
