@@ -96,8 +96,10 @@ class noaa_job():
         barometricPressure = {}
         dewpoint = {}
         temperature = {}
+        
+        
 
-        items = [relativeHumidity, barometricPressure, dewpoint, temperature]
+        items = ['relativeHumidity', 'barometricPressure', 'dewpoint', 'temperature', 'timestamp']
 
         for keys, values in observation.items():
             #print(values)
@@ -106,6 +108,8 @@ class noaa_job():
             dewpoint = {}
             temperature = {}
 
+            i = 1
+            item = 1
             for key, value in values.items():
                 # print(value)
                 if key == "relativeHumidity":
@@ -125,9 +129,17 @@ class noaa_job():
                         temperature['value'] = str(round(int(temperature['value'])*9/5+32))
                     else:
                         temperature = None
+                elif key == 'timestamp':
+                    i += 1
+                    timestamp = value.split("T")[-1]
+                    hour = timestamp.split(":")[0]
+                    minute = timestamp.split(":")[1]
+                    timestamp = f"{int(hour)-5}{minute}"
+                    
                 else:
                     continue
 
+            print
             # print(f"temperature: {temperature['value']}")
             # print(f"barometric pressure: {float(barometricPressure['value']):.5f}")
             # print(f"relative humidity: {relativeHumidity['value']}")

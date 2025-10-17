@@ -37,17 +37,19 @@ class noaa_job():
                         # print(f"{keys}: {values['value']}")
                         stuff[keys] = values['value']
                     elif isinstance(values, str) and keys == 'timestamp':
-                        # print(f"{keys}: {values}")
+                        print(f"{keys}: {values}")
                         timestamp = values.split("T")[-1]
                         hour = timestamp.split(":")[0]
                         minute = timestamp.split(":")[1]
+                        if int(hour) == 0:
+                            hour = 24
                         timestamp = f"{int(hour)-5}{minute}"
                         stuff[keys] = timestamp
             break
 
         return stuff
 
-    def fordays(self, pzip, country='US'):
+    def fordays(self, pzip, country='US', timestamp=False):
         observation = {}
         observations = self.n.get_observations(pzip, country)
         stuff = {}
@@ -65,20 +67,20 @@ class noaa_job():
                         stuff[keys] = values['value']
                     elif isinstance(values, str) and keys == 'timestamp':
                         # print(f"{keys}: {values}")
-                        timestamp = values.split("T")[-1]
-                        hour = timestamp.split(":")[0]
-                        minute = timestamp.split(":")[1]
-                        timestamp = f"{int(hour)-5}{minute}"
-                        stuff[keys] = timestamp
+                        tmptimestamp = values.split("T")[-1]
+                        hour = tmptimestamp.split(":")[0]
+                        minute = tmptimestamp.split(":")[1]
+                        if int(hour) == 0:
+                            hour = 24
+                        tmptimestamp = f"{(int(hour)-5)%24}{minute}"
+                        stuff[keys] = tmptimestamp
             if timestamp:
-                conatiner[stuff]['timestamp'] = stuff
+                container[stuff['timestamp']] = stuff
             else:
                 container[i] = stuff
+        # print(f"{json.dumps(container, indent=4)}")
         return container
 
-  
-
-    
     def badfordays(self, pzip, country='US'):
         i = 1
         i_s = []
@@ -136,7 +138,7 @@ class noaa_job():
                 tmptimestamp = value.split("T")[-1]
                 hour = tmptimestamp.split(":")[0]
                 minute = tmptimestamp.split(":")[1]
-                tmptimestamp = f"{int(hour)-5}{minute}"
+                tmptimestamp = f"{(int(hour)-5)%24}{minute}"
                 timestamp[value] = tmptimestamp
             else:
                 continue
@@ -246,15 +248,17 @@ class MainWindow(QMainWindow):
     def graph_item(self, x, pzip, country='US', samples=20, timestamp=False):
 
         # timestamps, i_s, observations = self.njob.fordays(pzip, country)
-        self.njob.singleshot(pzip, country)
+        # self.njob.singleshot(pzip, country)
+        observations = self.njob.fordays(pzip, country)
         # print(x)
+        # print(f"{json.dumps(observations)}")
 
         data = []
         wtime = []
         i = 0
         # wtime.append(i)
         for key, value in observations.items():
-            print(f"{x}: {json.dumps(value[x], indent=4)}")
+            # print(f"{x}: {json.dumps(value[x], indent=4)}")
             # break
             if value[x]:
                 '''
@@ -268,7 +272,7 @@ class MainWindow(QMainWindow):
                 thedata = value[x]['value']
                 data.append(thedata)
                 wtime.append(i)
-                print(f"{x}: {i}: {thedata}")
+                # print(f"{x}: {i}: {thedata}")
                 if i == int(samples):
                     break
                 i += 1
@@ -295,19 +299,22 @@ if __name__ == "__main__":
     parser.add_argument("-z", "--zipcode", default="83221", help="zipcode to gather data on")
     parser.add_argument("-c", "--country", default='US', help="country to gather data on")
     parser.add_argument("-s", "--samples", default='20', help="number of samples to chart")
-    parser.add_argument("-T", "--timestamp", action='store_true', default=False, help="timestamp")
+    parser.add_argument("-T", "--timestamp", action='store_true', help="timestamp")
     parser.add_argument("-t", "--tag", default='temperature', help="tag to plot - one of ['temperature', 'barometricPressure', 'relativeHumidity', 'dewpoint']")
     args = parser.parse_args()
 
-    # njob = noaa_job()
-
+    njob = noaa_job()
+    containers = njob.fordays(args.zipcode, args.country, args.timestamp)
+    print(f"{json.dumps(containers, indent=4)}")
+    #stuff = njob.singleshot(args.zipcode, args.country)
+    # print(f"{json.dumps(stuff, indent=4)}")
     # njob.basic_vals('39503', 'US')
     # njob.fordays_vals(args.zipcode, args.country)
-
+    '''
     app = QApplication(sys.argv)
     main = MainWindow()
     main.graph_item(args.tag, args.zipcode, args.country, args.samples, args.timestamp)
     main.show()
     app.exec()
-
+    '''
 
