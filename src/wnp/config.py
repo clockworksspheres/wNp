@@ -12,3 +12,9 @@ DEFAULT_LOG_LEVEL=LogPriority["CRITICAL"]
 #                              ^^^^^ Input log level here...
 #####
 
+
+#####
+# F for Farenheight, 
+# C for Celcius
+DEFAULT_TMP_DEG=F
+
