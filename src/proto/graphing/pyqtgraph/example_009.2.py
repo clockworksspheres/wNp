@@ -20,7 +20,7 @@ from noaa_sdk import NOAA
 
 sys.path.append("../../..")
 
-from wNp.config import DEFAULT_DEGREES_UNITS
+from wnp.config import DEFAULT_DEGREES_UNITS
 
 
 class noaa_job():
@@ -91,7 +91,12 @@ class noaa_job():
                 container[i]['timestamp'] = tmptimestamp
                 container[i]['temperature'] = float(observation['temperature']['value'])*9/5 + 32 
                 try:
-                    container[i]['dewpoint'] = float(observation['dewpoint']['value'])
+                    if DEFAULT_DEGREES_UNITS == 'C' and observation['dewpoint']['unitCode'][-1] == 'F':
+                        container[i]['dewpoint'] = (float(observation['dewpoint']['value'])-32)*5/9
+                    elif DEFAULT_DEGREES_UNITS == 'F' and observation['dewpoint']['unitCode'][-1] =='C':
+                        container[i]['dewpoint'] = float(observation['dewpoint']['value'])*9/5 + 32
+                    else:
+                        container[i]['dewpoint'] = float(observation['dewpoint']['value'])
                 except TypeError as err:
                     container[i]['dewpoint'] = 0
                 try:
