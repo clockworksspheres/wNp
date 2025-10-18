@@ -16,5 +16,5 @@ DEFAULT_LOG_LEVEL=LogPriority["CRITICAL"]
 #####
 # F for Farenheight, 
 # C for Celcius
-DEFAULT_DEGREES_UNITS='C'
+DEFAULT_DEGREES_UNITS='F'
 

@@ -89,7 +89,12 @@ class noaa_job():
             else:
                 container[i] = {}
                 container[i]['timestamp'] = tmptimestamp
-                container[i]['temperature'] = float(observation['temperature']['value'])*9/5 + 32 
+                if DEFAULT_DEGREES_UNITS == 'C' and observation['temperature']['unitCode'][-1] == 'F':
+                    container[i]['temperature'] = (float(observation['temperature']['value'])-32)*5/9
+                elif DEFAULT_DEGREES_UNITS == 'F' and observation['temperature']['unitCode'][-1] == 'C':
+                    container[i]['temperature'] = float(observation['temperature']['value'])*9/5 + 32
+                else:
+                    container[i]['temperature'] = float(observation['temperature']['value'])
                 try:
                     if DEFAULT_DEGREES_UNITS == 'C' and observation['dewpoint']['unitCode'][-1] == 'F':
                         container[i]['dewpoint'] = (float(observation['dewpoint']['value'])-32)*5/9
