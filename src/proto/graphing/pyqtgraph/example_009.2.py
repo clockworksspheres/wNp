@@ -18,6 +18,10 @@ import pyqtgraph as pg
 # pip install noaa_sdk
 from noaa_sdk import NOAA
 
+sys.path.append("../../..")
+
+from wNp.config import DEFAULT_DEGREES_UNITS
+
 
 class noaa_job():
     def __init__(self):
