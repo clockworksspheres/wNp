@@ -76,9 +76,19 @@ class noaa_job():
             if timestamp:
                 container[tmptimestamp] = {}
                 container[tmptimestamp]['timestamp'] = tmptimestamp
-                container[tmptimestamp]['temperature'] = float(observation['temperature']['value'])*9/5 + 32
+                if DEFAULT_DEGREES_UNITS == 'C' and observation['temperature']['unitCode'][-1] == 'F':
+                    container[tmptimestamp]['temperature'] = (float(observation['temperature']['value'])-32)*5/9
+                elif DEFAULT_DEGREES_UNITS == 'F' and observation['temperature']['unitCode'][-1] == 'C':
+                    container[tmptimestamp]['temperature'] = float(observation['temperature']['value'])*9/5 + 32
+                else:
+                    container[tmptimestamp]['temperature'] = float(observation['temperature']['value'])
                 try:
-                    container[tmptimestamp]['dewpoint'] = float(observation['dewpoint']['value'])
+                    if DEFAULT_DEGREES_UNITS == 'C' and observation['dewpoint']['unitCode'][-1] == 'F':
+                        container[tmptimestamp]['dewpoint'] = (float(observation['dewpoint']['value'])-32)*5/9
+                    elif DEFAULT_DEGREES_UNITS == 'F' and observation['dewpoint']['unitCode'][-1] =='C':
+                        container[tmptimestamp]['dewpoint'] = float(observation['dewpoint']['value'])*9/5 + 32
+                    else:
+                        container[tmptimestamp]['dewpoint'] = float(observation['dewpoint']['value'])
                 except TypeError as err:
                     container[tmptimestamp]['dewpoint'] = 0
                 try:
