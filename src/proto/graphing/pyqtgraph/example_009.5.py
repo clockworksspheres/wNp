@@ -2,7 +2,7 @@
 
 import faulthandler
 import traceback
-import sys 
+import sys
 import json
 from collections import OrderedDict
 
@@ -18,12 +18,12 @@ import pyqtgraph as pg
 # pip install noaa_sdk
 from noaa_sdk import NOAA
 
-sys.path.append("../..")
+sys.path.append("../../..")
 
 from wnp.config import DEFAULT_DEGREES_UNITS
 
 
-class NoaaObservationRun():
+class noaa_job():
     def __init__(self):
         self.n = NOAA()
 
@@ -53,19 +53,6 @@ class NoaaObservationRun():
 
         return stuff
 
-    def fordaysRaw(self, pzip, country='US', samples=10, timestamp=False):
-        i = 1 
-        observation = {}
-        observations = self.n.get_observations(pzip, country)
-        for item in observations:
-            tmp = {i : item}
-            observation.update(tmp)
-            # print(json.dumps(observation, indent=4))
-            #break
-            i += 1
-        # print(json.dumps(observation, indent=4))
-        return observation
-
     def fordays(self, pzip, country='US', samples=10, timestamp=False):
         observation = {}
         observations = self.n.get_observations(pzip, country)
@@ -76,7 +63,7 @@ class NoaaObservationRun():
         for observation in observations:
             #print(json.dumps(observation, indent=4))
             i += 1
-
+            
             tmptimestamp = observation['timestamp'].split("T")[-1]
             hour = tmptimestamp.split(":")[0]
             minute = tmptimestamp.split(":")[1]
@@ -89,16 +76,12 @@ class NoaaObservationRun():
             if timestamp:
                 container[tmptimestamp] = {}
                 container[tmptimestamp]['timestamp'] = tmptimestamp
-                try:
-                    if DEFAULT_DEGREES_UNITS == 'C' and observation['temperature']['unitCode'][-1] == 'F':
-                        container[tmptimestamp]['temperature'] = (float(observation['temperature']['value'])-32)*5/9
-                    elif DEFAULT_DEGREES_UNITS == 'F' and observation['temperature']['unitCode'][-1] == 'C':
-                        container[tmptimestamp]['temperature'] = float(observation['temperature']['value'])*9/5 + 32
-                    else:
-                        container[tmptimestamp]['temperature'] = float(observation['temperature']['value'])
-                except TypeError as err:
-                    container[tmptimestamp]['temperature'] = 0
-
+                if DEFAULT_DEGREES_UNITS == 'C' and observation['temperature']['unitCode'][-1] == 'F':
+                    container[tmptimestamp]['temperature'] = (float(observation['temperature']['value'])-32)*5/9
+                elif DEFAULT_DEGREES_UNITS == 'F' and observation['temperature']['unitCode'][-1] == 'C':
+                    container[tmptimestamp]['temperature'] = float(observation['temperature']['value'])*9/5 + 32
+                else:
+                    container[tmptimestamp]['temperature'] = float(observation['temperature']['value'])
                 try:
                     if DEFAULT_DEGREES_UNITS == 'C' and observation['dewpoint']['unitCode'][-1] == 'F':
                         container[tmptimestamp]['dewpoint'] = (float(observation['dewpoint']['value'])-32)*5/9
@@ -108,31 +91,20 @@ class NoaaObservationRun():
                         container[tmptimestamp]['dewpoint'] = float(observation['dewpoint']['value'])
                 except TypeError as err:
                     container[tmptimestamp]['dewpoint'] = 0
-
                 try:
                     container[tmptimestamp]['relativeHumidity'] = float(observation['relativeHumidity']['value'])
                 except TypeError as err:
                     container[tmptimestamp]['relativeHumidity'] = 0
-
-                try:
-                    container[tmptimestamp]['barometricPressure'] = float(observation['barometricPressure']['value'])
-                except TypeError as err:
-                    container[tmptimestamp]['barometricPressure'] = 0
-
+                container[tmptimestamp]['barometricPressure'] = float(observation['barometricPressure']['value'])
             else:
                 container[i] = {}
                 container[i]['timestamp'] = tmptimestamp
-
-                try:
-                    if DEFAULT_DEGREES_UNITS == 'C' and observation['temperature']['unitCode'][-1] == 'F':
-                        container[i]['temperature'] = (float(observation['temperature']['value'])-32)*5/9
-                    elif DEFAULT_DEGREES_UNITS == 'F' and observation['temperature']['unitCode'][-1] == 'C':
-                        container[i]['temperature'] = float(observation['temperature']['value'])*9/5 + 32
-                    else:
-                        container[i]['temperature'] = float(observation['temperature']['value'])
-                except TypeError as err:
-                    container[i]['temperature'] = 0
-
+                if DEFAULT_DEGREES_UNITS == 'C' and observation['temperature']['unitCode'][-1] == 'F':
+                    container[i]['temperature'] = (float(observation['temperature']['value'])-32)*5/9
+                elif DEFAULT_DEGREES_UNITS == 'F' and observation['temperature']['unitCode'][-1] == 'C':
+                    container[i]['temperature'] = float(observation['temperature']['value'])*9/5 + 32
+                else:
+                    container[i]['temperature'] = float(observation['temperature']['value'])
                 try:
                     if DEFAULT_DEGREES_UNITS == 'C' and observation['dewpoint']['unitCode'][-1] == 'F':
                         container[i]['dewpoint'] = (float(observation['dewpoint']['value'])-32)*5/9
@@ -142,23 +114,72 @@ class NoaaObservationRun():
                         container[i]['dewpoint'] = float(observation['dewpoint']['value'])
                 except TypeError as err:
                     container[i]['dewpoint'] = 0
-
                 try:
                     container[i]['relativeHumidity'] = float(observation['relativeHumidity']['value'])
                 except TypeError as err:
                     container[i]['relativeHumidity'] = 0
-
-                try:
-                    container[i]['barometricPressure'] = float(observation['barometricPressure']['value'])
-                except TypeError as err:
-                    container[i]['barometricPressure'] = 0
-
+                container[i]['barometricPressure'] = float(observation['barometricPressure']['value'])
             if int(i) == int(samples):
                 break
         print(f"{json.dumps(container, indent=4)}")
 
         return container
 
+
+class MainWindow(QMainWindow):
+
+    def __init__(self):
+        super().__init__()
+
+        self.graphWidget = pg.PlotWidget()
+        self.setCentralWidget(self.graphWidget)
+        
+        self.njob = noaa_job()
+
+        self.lineColor = { 'temperature' : 'blue', 'dewpoint' : 'green', 'relativeHumidity' : 'purple', 'barometricPressure' : 'orange' }
+
+    def graph_item(self, item, pzip, country='US', samples=20, timestamp=False):
+
+        # timestamps, i_s, observations = self.njob.fordays(pzip, country)
+        # self.njob.singleshot(pzip, country)
+        observations = self.njob.fordays(pzip, country, samples, timestamp)
+        # print(item)
+        # print(f"{json.dumps(observations)}")
+
+        data = []
+        wtime = []
+        i = 0
+        # wtime.append(i)
+        for key, value in observations.items():
+            '''
+            if timestamp:
+                # wtime.append(int(''.join(key.split('-'))))
+                # the above won't work -- what needs to be done is to
+                # use the 'timestamp' as a label for each of the iterations..
+                wtime.append(key)
+            else:
+                wtime.append(key)
+            '''
+            wtime.append(i)    
+            data.append(value[item])
+            #print(f"{key}: {item}: {value[item]}")
+            i += 1
+            if i == int(samples):
+                break
+        # print(f"{json.dumps(observations, indent=4)}")
+
+        data.reverse()
+
+        self.graphWidget.setBackground('w')
+        self.graphWidget.setTitle(item, color="b", size="30pt")
+        self.graphWidget.setLabel('left', item, color=self.lineColor[item], size='14pt')
+        self.graphWidget.setLabel('bottom', 'Time', color='green', size='14pt')   
+
+        # pen = pg.mkPen(color=(255, 0, 0))
+        pen = pg.mkPen(color=self.lineColor[item])
+
+        self.graphWidget.plot(wtime, data, pen=pen)
+        
 
 if __name__ == "__main__":
 
@@ -173,22 +194,19 @@ if __name__ == "__main__":
     parser.add_argument("-c", "--country", default='US', help="country to gather data on")
     parser.add_argument("-s", "--samples", default='2000', help="number of samples to chart")
     parser.add_argument("-T", "--timestamp", action='store_true', help="timestamp")
-    parser.add_argument("-R", "--raw", action='store_true', help="dump raw observation data to console")
     parser.add_argument("-t", "--tag", default='temperature', help="tag to plot - one of ['temperature', 'barometricPressure', 'relativeHumidity', 'dewpoint']")
     args = parser.parse_args()
 
-    njob = NoaaObservationRun()
-    if args.raw:
-        containers = njob.fordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
-        print(f"{json.dumps(containers, indent=3)}")
-    else:
-        containers = njob.fordays(args.zipcode, args.country, args.samples, args.timestamp)
-        print("###############################")
-        print("### ForDays Observation run ###")
-        print(f"{json.dumps(containers, indent=4)}")
-        stuff = njob.singleshot(args.zipcode, args.country)
-        print("##################################")
-        print("### SingleShot Observation run ###")
-        print(f"{json.dumps(stuff, indent=4)}")
-        print("##################################")
+    #njob = noaa_job()
+    #containers = njob.fordays(args.zipcode, args.country, args.samples, args.timestamp)
+    # print(f"{json.dumps(containers, indent=4)}")
+    # stuff = njob.singleshot(args.zipcode, args.country)
+    # print(f"{json.dumps(stuff, indent=4)}")
+
+    app = QApplication(sys.argv)
+    main = MainWindow()
+    main.graph_item(args.tag, args.zipcode, args.country, args.samples, args.timestamp)
+    main.show()
+    app.exec()
+
 
