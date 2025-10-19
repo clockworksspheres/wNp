@@ -136,12 +136,14 @@ class MainWindow(QMainWindow):
         
         self.njob = noaa_job()
 
-    def graph_item(self, x, pzip, country='US', samples=20, timestamp=False):
+        self.lineColor = { 'temperature' : 'blue', 'dewpoint' : 'green', 'relativeHumidity' : 'purple', 'barometricPressure' : 'orange' }
+
+    def graph_item(self, item, pzip, country='US', samples=20, timestamp=False):
 
         # timestamps, i_s, observations = self.njob.fordays(pzip, country)
         # self.njob.singleshot(pzip, country)
         observations = self.njob.fordays(pzip, country, samples, timestamp)
-        # print(x)
+        # print(item)
         # print(f"{json.dumps(observations)}")
 
         data = []
@@ -159,16 +161,23 @@ class MainWindow(QMainWindow):
                 wtime.append(key)
             '''
             wtime.append(i)    
-            data.append(value[x])
-            #print(f"{key}: {x}: {value[x]}")
+            data.append(value[item])
+            #print(f"{key}: {item}: {value[item]}")
             i += 1
             if i == int(samples):
                 break
         # print(f"{json.dumps(observations, indent=4)}")
 
         data.reverse()
+
         self.graphWidget.setBackground('w')
-        pen = pg.mkPen(color=(255, 0, 0))
+        self.graphWidget.setTitle(item, color="b", size="30pt")
+        self.graphWidget.setLabel('left', item, color=self.lineColor[item], size='14pt')
+        self.graphWidget.setLabel('bottom', 'Time', color='green', size='14pt')   
+
+        # pen = pg.mkPen(color=(255, 0, 0))
+        pen = pg.mkPen(color=self.lineColor[item])
+
         self.graphWidget.plot(wtime, data, pen=pen)
         
 
