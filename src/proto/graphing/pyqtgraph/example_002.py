@@ -7,7 +7,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow
 import pyqtgraph as pg
 import sys
 
-pzip = '83221'
+pzip = '83402'
 country = 'US'
 
 class noaa_job():
@@ -89,7 +89,7 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="A simple script to demonstrate argparse.")
-    parser.add_argument("-z", "--zipcode", default="00000", help="zipcode to gather data on")
+    parser.add_argument("-z", "--zipcode", default="83402", help="zipcode to gather data on")
     parser.add_argument("-c", "--country", default='US', help="country to gather data on")
     args = parser.parse_args()
 
