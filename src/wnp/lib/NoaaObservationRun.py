@@ -26,6 +26,7 @@ from wnp.config import DEFAULT_DEGREES_UNITS
 class NoaaObservationRun():
     def __init__(self):
         self.n = NOAA()
+        self.setFile2Load()
 
     def singleshot(self, pzip, country='US'):
         observation = {}
@@ -184,6 +185,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="A simple script to demonstrate argparse.")
     parser.add_argument("-z", "--zipcode", default="83402", help="zipcode to gather data on")
+    parser.add_argument("-f", "--file2load", default='data.json', help="raw json data file to load, rather than acquire live data")
     parser.add_argument("-c", "--country", default='US', help="country to gather data on")
     parser.add_argument("-s", "--samples", default='2000', help="number of samples to chart")
     parser.add_argument("-T", "--timestamp", action='store_true', help="timestamp")
