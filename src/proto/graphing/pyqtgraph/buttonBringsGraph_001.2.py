@@ -29,7 +29,8 @@ class GraphWindow(QWidget):
         if isinstance(x, list)  and isinstance(y, list):
             self.plot_widget.plot(x, y, pen='b')
         else:
-            self.plot_widget.plot(x, pen='b')
+            y = x
+            self.plot_widget.plot(y, pen='b')
         self.plot_widget.setTitle(title)
         self.plot_widget.setLabel('left', 'Value')
         self.plot_widget.setLabel('bottom', 'X')
