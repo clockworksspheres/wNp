@@ -14,125 +14,10 @@ from PySide6.QtWidgets import QApplication, QMainWindow
 import pyqtgraph as pg
 
 #####
-# NOAA library to access weather data
-# pip install noaa_sdk
-from noaa_sdk import NOAA
-
-
-class noaa_job():
-    def __init__(self):
-        self.n = NOAA()
-
-    def singleshot(self, pzip, country='US'):
-        observation = {}
-        observations = self.n.get_observations(pzip, country)
-        for item in observations:
-            observation = item
-            # :print(json.dumps(observation, indent=4))
-            break
-        return observation
-
-    def fordays(self, pzip, country='US'):
-        i = 1
-        observation = OrderedDict()
-        observations = self.n.get_observations(pzip, country)
-        for item in observations:
-            tmp = {i : item}
-            observation.update(tmp)
-            # print(json.dumps(observation, indent=4))
-            #break
-            i += 1
-        # print(json.dumps(observation, indent=4))
-        return observation
-
-
-    def basic_vals(self, pzip, country):
-        
-        observation = self.singleshot(pzip, country)    
-
-        relativeHumidity = {}
-        barometricPressure = {}
-        dewpoint = {}
-        temperature = {}
-
-        items = [relativeHumidity, barometricPressure, dewpoint, temperature]
-
-        for key, value in observation.items():
-            if key == "relativeHumidity":
-                relativeHumidity = value
-            elif key == "barometricPressure":
-                barometricPressure = value
-                if barometricPressure:
-                    barometricPressure['value'] = str(float(barometricPressure['value'])/100)
-                else:
-                    barometricPressure = None
-                # print(json.dumps(value, indent=4))
-            elif key == "dewpoint":
-                dewpoint = value
-            elif key == "temperature":
-                temperature = value
-                if temperature:
-                    temperature['value'] = str(round(int(temperature['value'])*9/5+32))
-                else:
-                    temperature = None
-            else:
-                continue
-
-        # print(f"temperature: {temperature['value']}")
-        # print(f"barometric pressure: {float(barometricPressure['value']):.5f}")
-        # print(f"relative humidity: {relativeHumidity['value']}")
-        # print(f"dewpoint: {dewpoint['value']}")
-
-    def fordays_vals(self, pzip, country):
-        
-        observation = self.fordays(pzip, country)    
-
-        # print(str(observation))
-
-        # print(json.dumps(observation, indent=4))
-        # return
-
-        relativeHumidity = {}
-        barometricPressure = {}
-        dewpoint = {}
-        temperature = {}
-
-        items = [relativeHumidity, barometricPressure, dewpoint, temperature]
-
-        for keys, values in observation.items():
-            #print(values)
-            relativeHumidity = {}
-            barometricPressure = {}
-            dewpoint = {}
-            temperature = {}
-
-            for key, value in values.items():
-                # print(value)
-                if key == "relativeHumidity":
-                    relativeHumidity = value
-                elif key == "barometricPressure":
-                    barometricPressure = value
-                    if barometricPressure:
-                        barometricPressure['value'] = str(float(barometricPressure['value'])/100)
-                    else:
-                        barometricPressure = None
-                    # print(json.dumps(value, indent=4))
-                elif key == "dewpoint":
-                    dewpoint = value
-                elif key == "temperature":
-                    temperature = value
-                    if temperature:
-                        temperature['value'] = str(round(int(temperature['value'])*9/5+32))
-                    else:
-                        temperature = None
-                else:
-                    continue
-
-            # print(f"temperature: {temperature['value']}")
-            # print(f"barometric pressure: {float(barometricPressure['value']):.5f}")
-            # print(f"relative humidity: {relativeHumidity['value']}")
-            # print(f"dewpoint: {dewpoint['value']}")
-
+# load internal libraries
+sys.path.append("../../..")
+from wnp.lib.NoaaObservationRun import NoaaObservationRun
+ 
 
 class MainWindow(QMainWindow):
 
@@ -142,7 +27,7 @@ class MainWindow(QMainWindow):
         self.graphWidget = pg.PlotWidget()
         self.setCentralWidget(self.graphWidget)
         
-        self.njob = noaa_job()
+        self.njob = NoaaObservationRun()
         '''
         temperature = [30,32,34,32,33,31,29,32,35,45]
 
