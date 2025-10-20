@@ -53,9 +53,14 @@ class NoaaObservationRun():
 
         return stuff
 
-    def fordays(self, pzip, country='US', samples=10, timestamp=False):
+    def fordays(self, pzip, country='US', samples=10, timestamp=False, live=True):
         observation = {}
-        observations = self.n.get_observations(pzip, country)
+        if live:
+            observations = self.n.get_observations(pzip, country)
+        else:
+            with open('data.json', 'r') as file:
+                observations = json.load(file)
+            print(if"{json.dumps(observations, indent=3)}")
         stuff = {}
         tags = ['timestamp', 'temperature', 'dewpoint', 'relativeHumidity', 'barometricPressure']
         i = 0
