@@ -1,3 +1,8 @@
+#!/usr/bin/env -S python -u
+
+import faulthandler
+import traceback
+
 import sys
 import numpy as np
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget
