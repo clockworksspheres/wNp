@@ -92,8 +92,8 @@ class MainWindow(QMainWindow):
         self.graph_windows = []
 
     def get_live_observations(self, y='temperature', pzip='39503', country='US', samples=40, timestamp=False):
-        pzip = self.zipLineEdit.text()
-        pzip = pzip.strip()
+        # pzip = self.zipLineEdit.text()
+        # pzip = pzip.strip()
         print(f"Zip Code: {pzip}")
         
         njob = NoaaObservationRun()
@@ -118,35 +118,48 @@ class MainWindow(QMainWindow):
  
     def show_graph1(self):
 
-        wtime, data = self.get_live_observations('temperature', '39503')        
+        pzip = self.zipLineEdit.text()
+        pzip = pzip.strip()
 
-        graph = GraphWindow("Temperature", wtime, data)
+        wtime, data = self.get_live_observations('temperature', pzip)       
+
+        graph = GraphWindow(f"Temperature: {pzip}", wtime, data)
         graph.show()
         self.graph_windows.append(graph)
         
     def show_graph2(self):
 
-        wtime, data = self.get_live_observations('relativeHumidity', '39503')        
+        pzip = self.zipLineEdit.text()
+        pzip = pzip.strip()
 
-        graph = GraphWindow("Relative Humidity", wtime, data)
+        wtime, data = self.get_live_observations('relativeHumidity', pzip)        
+
+        graph = GraphWindow(f"Relative Humidity: {pzip}", wtime, data)
         graph.show()
         self.graph_windows.append(graph)
         
     def show_graph3(self):
 
-        wtime, data = self.get_live_observations('barometricPressure', '39503')
+        pzip = self.zipLineEdit.text()
+        pzip = pzip.strip()
+
+        wtime, data = self.get_live_observations('barometricPressure', pzip)
         
-        graph = GraphWindow("Barometric Pressure", wtime, data)
+        graph = GraphWindow(f"Barometric Pressure: {pzip}", wtime, data)
         graph.show()
         self.graph_windows.append(graph)
         
     def show_graph4(self):
 
-        wtime, data = self.get_live_observations('dewpoint', '39503')
+        pzip = self.zipLineEdit.text()
+        pzip = pzip.strip()
 
-        graph = GraphWindow("Dewpoint", wtime, data)
+        wtime, data = self.get_live_observations('dewpoint', pzip)
+
+        graph = GraphWindow(f"Dewpoint: {pzip}", wtime, data)
         graph.show()
         self.graph_windows.append(graph)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
