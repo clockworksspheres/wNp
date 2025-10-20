@@ -121,7 +121,7 @@ class MainWindow(QMainWindow):
         pzip = self.zipLineEdit.text()
         pzip = pzip.strip()
 
-        wtime, data = self.get_live_observations('temperature', pzip)       
+        wtime, data = self.get_live_observations('temperature', pzip)
 
         graph = GraphWindow(f"Temperature: {pzip}", wtime, data)
         graph.show()
@@ -132,7 +132,7 @@ class MainWindow(QMainWindow):
         pzip = self.zipLineEdit.text()
         pzip = pzip.strip()
 
-        wtime, data = self.get_live_observations('relativeHumidity', pzip)        
+        wtime, data = self.get_live_observations('relativeHumidity', pzip)
 
         graph = GraphWindow(f"Relative Humidity: {pzip}", wtime, data)
         graph.show()

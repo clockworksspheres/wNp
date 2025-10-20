@@ -92,25 +92,34 @@ class MainWindow(QMainWindow):
         self.graph_windows = []
 
     def get_live_observations(self, y='temperature', pzip='39503', country='US', samples=40, timestamp=False):
-        pzip = self.zipLineEdit.text()
-        pzip = pzip.strip()
+        # pzip = self.zipLineEdit.text()
+        # pzip = pzip.strip()
         print(f"Zip Code: {pzip}")
-        
-        njob = NoaaObservationRun()
-        observations = njob.fordays(pzip, country='US', samples=2000)
 
         self.data = []
         self.wtime = []
-        i = 0
-        # wtime.append(i)
-        for key, value in observations.items():
-            self.wtime.append(i)    
-            self.data.append(value[y])
-            #print(f"{key}: {item}: {value[item]}")
-            i += 1
-            #if i == int(samples):
-            #    break
-        # print(f"{json.dumps(observations, indent=4)}")
+
+        try:        
+            njob = NoaaObservationRun()
+            observations = njob.fordays(pzip, country='US', samples=2000)
+
+            self.data = []
+            self.wtime = []
+            i = 0
+            # wtime.append(i)
+            for key, value in observations.items():
+                self.wtime.append(i)    
+                self.data.append(value[y])
+                #print(f"{key}: {item}: {value[item]}")
+                i += 1
+                #if i == int(samples):
+                #    break
+            # print(f"{json.dumps(observations, indent=4)}")
+        except AttributeError as err:
+            print(f"{traceback.format_exc()}")
+            print("#####")
+            print("Error trying to collect data too often from the NOAA")
+            print("#####")
 
         self.data.reverse()
 
@@ -118,35 +127,48 @@ class MainWindow(QMainWindow):
  
     def show_graph1(self):
 
-        wtime, data = self.get_live_observations('temperature', '39503')        
+        pzip = self.zipLineEdit.text()
+        pzip = pzip.strip()
 
-        graph = GraphWindow("Temperature", wtime, data)
+        wtime, data = self.get_live_observations('temperature', pzip)
+
+        graph = GraphWindow(f"Temperature: {pzip}", wtime, data)
         graph.show()
         self.graph_windows.append(graph)
         
     def show_graph2(self):
 
-        wtime, data = self.get_live_observations('relativeHumidity', '39503')        
+        pzip = self.zipLineEdit.text()
+        pzip = pzip.strip()
 
-        graph = GraphWindow("Relative Humidity", wtime, data)
+        wtime, data = self.get_live_observations('relativeHumidity', pzip)
+
+        graph = GraphWindow(f"Relative Humidity: {pzip}", wtime, data)
         graph.show()
         self.graph_windows.append(graph)
         
     def show_graph3(self):
 
-        wtime, data = self.get_live_observations('barometricPressure', '39503')
+        pzip = self.zipLineEdit.text()
+        pzip = pzip.strip()
+
+        wtime, data = self.get_live_observations('barometricPressure', pzip)
         
-        graph = GraphWindow("Barometric Pressure", wtime, data)
+        graph = GraphWindow(f"Barometric Pressure: {pzip}", wtime, data)
         graph.show()
         self.graph_windows.append(graph)
         
     def show_graph4(self):
 
-        wtime, data = self.get_live_observations('dewpoint', '39503')
+        pzip = self.zipLineEdit.text()
+        pzip = pzip.strip()
 
-        graph = GraphWindow("Dewpoint", wtime, data)
+        wtime, data = self.get_live_observations('dewpoint', pzip)
+
+        graph = GraphWindow(f"Dewpoint: {pzip}", wtime, data)
         graph.show()
         self.graph_windows.append(graph)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
