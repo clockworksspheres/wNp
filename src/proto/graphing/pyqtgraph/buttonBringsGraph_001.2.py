@@ -7,8 +7,14 @@ import numpy as np
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget
 import pyqtgraph as pg
 
+####
+# loading local libs
+sys.path.append("../../..")
+from wnp.lib.NoaaObservationRun import NoaaObservationRun
+
+
 class GraphWindow(QWidget):
-    def __init__(self, title, data):
+    def __init__(self, title, x, y=None):
         super().__init__()
         self.setWindowTitle(title)
         self.setGeometry(100, 100, 600, 400)
@@ -20,7 +26,10 @@ class GraphWindow(QWidget):
         self.setLayout(layout)
         
         # Plot data
-        self.plot_widget.plot(data, pen='b')
+        if isinstance(x, list)  and isinstance(y, list):
+            self.plot_widget.plot(x, y, pen='b')
+        else:
+            self.plot_widget.plot(x, pen='b')
         self.plot_widget.setTitle(title)
         self.plot_widget.setLabel('left', 'Value')
         self.plot_widget.setLabel('bottom', 'X')
@@ -43,7 +52,7 @@ class MainWindow(QMainWindow):
         self.data4 = np.linspace(0, 5, 100) ** 2
         
         # Create buttons
-        button1 = QPushButton("Sine Wave")
+        button1 = QPushButton("Temperature")
         button2 = QPushButton("Cosine Wave")
         button3 = QPushButton("Random Data")
         button4 = QPushButton("Quadratic")
@@ -64,7 +73,26 @@ class MainWindow(QMainWindow):
         self.graph_windows = []
         
     def show_graph1(self):
-        graph = GraphWindow("Sine Wave", self.data1)
+        
+        njob = NoaaObservationRun()
+        observations = njob.fordays(pzip='83402', country='US', samples=2000)
+
+        data = []
+        wtime = []
+        i = 0
+        # wtime.append(i)
+        for key, value in observations.items():
+            wtime.append(i)    
+            data.append(value['temperature'])
+            #print(f"{key}: {item}: {value[item]}")
+            i += 1
+            #if i == int(samples):
+            #    break
+        # print(f"{json.dumps(observations, indent=4)}")
+
+        data.reverse()
+
+        graph = GraphWindow("Temperature", wtime, data)
         graph.show()
         self.graph_windows.append(graph)
         
