@@ -95,22 +95,31 @@ class MainWindow(QMainWindow):
         # pzip = self.zipLineEdit.text()
         # pzip = pzip.strip()
         print(f"Zip Code: {pzip}")
-        
-        njob = NoaaObservationRun()
-        observations = njob.fordays(pzip, country='US', samples=2000)
 
         self.data = []
         self.wtime = []
-        i = 0
-        # wtime.append(i)
-        for key, value in observations.items():
-            self.wtime.append(i)    
-            self.data.append(value[y])
-            #print(f"{key}: {item}: {value[item]}")
-            i += 1
-            #if i == int(samples):
-            #    break
-        # print(f"{json.dumps(observations, indent=4)}")
+
+        try:        
+            njob = NoaaObservationRun()
+            observations = njob.fordays(pzip, country='US', samples=2000)
+
+            self.data = []
+            self.wtime = []
+            i = 0
+            # wtime.append(i)
+            for key, value in observations.items():
+                self.wtime.append(i)    
+                self.data.append(value[y])
+                #print(f"{key}: {item}: {value[item]}")
+                i += 1
+                #if i == int(samples):
+                #    break
+            # print(f"{json.dumps(observations, indent=4)}")
+        except AttributeError as err:
+            print(f"{traceback.format_exc()}")
+            print("#####")
+            print("Error trying to collect data from the NOAA, either too often, or network errors...")
+            print("#####")
 
         self.data.reverse()
 
