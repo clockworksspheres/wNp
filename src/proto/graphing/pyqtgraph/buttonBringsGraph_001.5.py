@@ -118,7 +118,7 @@ class MainWindow(QMainWindow):
         except AttributeError as err:
             print(f"{traceback.format_exc()}")
             print("#####")
-            print("Error trying to collect data too often from the NOAA")
+            print("Error trying to collect data from the NOAA, either too often or network errors...")
             print("#####")
 
         self.data.reverse()
