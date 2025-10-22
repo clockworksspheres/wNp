@@ -3,6 +3,11 @@
 import faulthandler
 import traceback
 import sys 
+import json
+
+#####
+# Importing 3rd party libraries - must be installed
+# separately
 import numpy as np
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QLineEdit
 import pyqtgraph as pg
@@ -170,14 +175,51 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
 
-    # Set pyqtgraph to use PySide6
-    pg.setConfigOption('background', 'w')
-    pg.setConfigOption('foreground', 'k')
+    import argparse
 
-    window = MainWindow()
-    window.show()
-    sys.exit(app.exec())
+    #####
+    # Enable traceback on segmentation fault...
+    faulthandler.enable()
 
+    parser = argparse.ArgumentParser(description="A simple script to demonstrate argparse.")
+    # parser.add_argument("-g", "--gui", action="store_true", help="Start the GUI - the default option.  If this option is given, all others will be ignored.")
+    parser.add_argument("-z", "--zipcode", default="83402", help="zipcode to gather data on")
+    parser.add_argument("-f", "--file2load", default='data.json', help="raw json data file to load, rather than acquire live data")
+    parser.add_argument("-c", "--country", default='US', help="country to gather data on")
+    parser.add_argument("-s", "--samples", default='2000', help="number of samples to chart")
+    parser.add_argument("-T", "--timestamp", action='store_true', help="timestamp")
+    parser.add_argument("-R", "--raw", action='store_true', help="dump raw observation data to console")
+    parser.add_argument("-t", "--tag", default='temperature', help="tag to plot - one of ['temperature', 'barometricPressure', 'relativeHumidity', 'dewpoint']")
+    args = parser.parse_args()
+
+
+    # if len(sys.argv) == 1 or args.gui:
+    if len(sys.argv) == 1:
+        app = QApplication(sys.argv)
+
+        # Set pyqtgraph to use PySide6
+        pg.setConfigOption('background', 'w')
+        pg.setConfigOption('foreground', 'k')
+
+        window = MainWindow()
+        window.show()
+        sys.exit(app.exec())
+
+    else:
+
+        njob = NoaaObservationRun()
+        if args.raw:
+            containers = njob.fordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
+            print(f"{json.dumps(containers, indent=3)}")
+        else:
+            containers = njob.fordays(args.zipcode, args.country, args.samples, args.timestamp)
+            print("###############################")
+            print("### ForDays Observation run ###")
+            print(f"{json.dumps(containers, indent=4)}")
+            stuff = njob.singleshot(args.zipcode, args.country)
+            print("##################################")
+            print("### SingleShot Observation run ###")
+            print(f"{json.dumps(stuff, indent=4)}")
+            print("##################################")
 
