@@ -61,8 +61,11 @@ class MainWindow(QMainWindow):
         # Create line edit and title
         self.zipLabel = QLabel("Zip Code")
         self.zipLineEdit = QLineEdit()
-        self.zipLabel.setText(f"Zip Code")
         self.zipLineEdit.setText(f"83402")
+
+        self.countryLabel = QLabel("Country")
+        self.countryLineEdit = QLineEdit()
+        self.countryLineEdit.setText(f"US")
 
         #self.samplesLabel = 
 
@@ -85,6 +88,8 @@ class MainWindow(QMainWindow):
         #vlayout.addWidget(hOneLayout)
         vlayout.addWidget(self.zipLabel)
         vlayout.addWidget(self.zipLineEdit)
+        vlayout.addWidget(self.countryLabel)
+        vlayout.addWidget(self.countryLineEdit)
         vlayout.addWidget(button1)
         vlayout.addWidget(button2)
         vlayout.addWidget(button3)
@@ -133,8 +138,10 @@ class MainWindow(QMainWindow):
 
         pzip = self.zipLineEdit.text()
         pzip = pzip.strip()
+        country = self.countryLineEdit.text()
+        country = country.strip
 
-        wtime, data = self.get_live_observations('temperature', pzip)
+        wtime, data = self.get_live_observations('temperature', pzip, country)
 
         graph = GraphWindow(f"Temperature: {pzip}", wtime, data)
         graph.show()
@@ -144,8 +151,10 @@ class MainWindow(QMainWindow):
 
         pzip = self.zipLineEdit.text()
         pzip = pzip.strip()
+        country = self.countryLineEdit.text()
+        country = country.strip
 
-        wtime, data = self.get_live_observations('relativeHumidity', pzip)
+        wtime, data = self.get_live_observations('relativeHumidity', pzip, country)
 
         graph = GraphWindow(f"Relative Humidity: {pzip}", wtime, data)
         graph.show()
@@ -155,8 +164,10 @@ class MainWindow(QMainWindow):
 
         pzip = self.zipLineEdit.text()
         pzip = pzip.strip()
+        country = self.countryLineEdit.text()
+        country = country.strip
 
-        wtime, data = self.get_live_observations('barometricPressure', pzip)
+        wtime, data = self.get_live_observations('barometricPressure', pzip, country)
 
         graph = GraphWindow(f"Barometric Pressure: {pzip}", wtime, data)
         graph.show()
@@ -166,8 +177,10 @@ class MainWindow(QMainWindow):
 
         pzip = self.zipLineEdit.text()
         pzip = pzip.strip()
+        country = self.countryLineEdit.text()
+        country = country.strip
 
-        wtime, data = self.get_live_observations('dewpoint', pzip)
+        wtime, data = self.get_live_observations('dewpoint', pzip, country)
 
         graph = GraphWindow(f"Dewpoint: {pzip}", wtime, data)
         graph.show()
