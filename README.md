@@ -35,7 +35,7 @@ This app is designed for anywhere that the US NOAA collects data from, locally a
 
 ## How to build & package
 
-Using venv to create a python environment for development of the project.
+Using python venv to create a python environment for development of the project.
 
 Will be using PyInstaller to create an app or integrated binary, depending on the operating system.
 
