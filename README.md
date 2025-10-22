@@ -4,6 +4,8 @@
 
 Starting as a weather tracking app, being used to track weather against health issues manually.  Eventually will have features added to track and analyze health conditions against weather patterns.
 
+Initially developed and tested on macOS, although should also work on other operating systems, should someone create a build script for it.  Build scripts available for rhel based systems and ubuntu based systems.
+
 # Who it is targeted for:
 
 Applicable to people with health issues that are affected by the weather.
@@ -37,7 +39,7 @@ Using venv to create a python environment for development of the project.
 
 Will be using PyInstaller to create an app or integrated binary, depending on the operating system.
 
-Still in the process of building the build pipeline.  BuildScripts borrowed from another project.  Only the build.macos.sh functions to build the dev environment.  Other build scripts not yet modified.
+Still in the process of building the build pipeline.  BuildScripts borrowed from another project.  Only the build.macos.sh functions to build the dev environment.  Other build scripts not yet tested.
 
 ## How to release
 
