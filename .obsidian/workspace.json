@@ -170,5 +170,30 @@
     }
   },
   "active": "25a0c13450941d77",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "src/packenv/lib/python3.13/site-packages/pyside6-6.10.0.dist-info/top_level.txt",
+    "src/packenv/lib/python3.13/site-packages/pyside6-6.10.0.dist-info/WHEEL",
+    "src/packenv/lib/python3.13/site-packages/pyside6-6.10.0.dist-info/REQUESTED",
+    "src/packenv/lib/python3.13/site-packages/pyside6-6.10.0.dist-info/RECORD",
+    "src/packenv/lib/python3.13/site-packages/pyside6-6.10.0.dist-info/METADATA",
+    "src/packenv/lib/python3.13/site-packages/pyside6-6.10.0.dist-info/INSTALLER",
+    "src/packenv/lib/python3.13/site-packages/pyside6-6.10.0.dist-info",
+    "src/packenv/lib/python3.13/site-packages/pyside6_addons-6.10.0.dist-info/top_level.txt",
+    "src/packenv/lib/python3.13/site-packages/pyside6_addons-6.10.0.dist-info/WHEEL",
+    "src/packenv/lib/python3.13/site-packages/pyside6_addons-6.10.0.dist-info/RECORD",
+    "src/packenv/lib/python3.13/site-packages/pyside6_addons-6.10.0.dist-info/METADATA",
+    "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/wander-24px@2x.png",
+    "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/wander-24px.png",
+    "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/wander-16px.png",
+    "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/vector-direction-24px@2x.png",
+    "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/vector-direction-24px.png",
+    "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/vector-direction-16px.png",
+    "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/trail-emitter-24px@2x.png",
+    "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/trail-emitter-24px.png",
+    "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/trail-emitter-16px.png",
+    "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/target-direction-24px@2x.png",
+    "src/packenv/lib/python3.13/site-packages/numpy/random/LICENSE.md",
+    "src/packenv/lib/python3.13/site-packages/idna-3.11.dist-info/licenses/LICENSE.md",
+    "src/packenv/lib/python3.13/site-packages/pip-25.2.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md"
+  ]
 }

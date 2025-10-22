@@ -9,10 +9,9 @@
 
 a = Analysis(
     ['ramdisk-setup.py'],
-    pathex=['.', './lib', './ui', '.packenv/bin', './packenv/include', './packenv/lib/python3.13/site-packages'],
+    pathex=['.', './lib', './ui', './packenv/bin', './packenv/include', './packenv/lib/python3.13/site-packages'],
     binaries=[],
-    datas=[("ramdisk/resources/img/*.png",    "./ramdisk/resources/img"), 
-           ("ramdisk/resources/icns/*.icns",  "./ramdisk/resources/icns")], 
+    datas=[]
     hiddenimports=['python3','python*','PySide6.*'],
     hookspath=[],
     hooksconfig={},

@@ -2,7 +2,7 @@
 
 # What it is:
 
-Starting as a weather tracking app, being used to track weather against health issues manually.  Eventually will have features added to track and analyze health conditions against weather patterns.
+Starting as a weather tracking app, being used to track weather against pain/health issues manually.  Eventually will have features added to track and analyze health conditions against weather patterns.
 
 Initially developed and tested on macOS, although should also work on other operating systems, should someone create a build script for it.  Build scripts available for rhel based systems and ubuntu based systems.
 
