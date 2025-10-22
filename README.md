@@ -17,7 +17,7 @@ Always
 
 ## When it started
 
-Project started in 2010 origionally as a C++ & Qt project on my own time, dropped for a decade and restarted in 2025 as a pyside6 project.
+Project started in 2010 origionally as a C++ & Qt project on my own time, dropped for a decade and restarted as a new pyside6 project in 2025.
 
 # Where:
 
