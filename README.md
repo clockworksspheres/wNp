@@ -1,42 +1,51 @@
 # wNp
 
-# What:
-
-Description of the project
+Starting as a weather tracking app, being used to track weather against health issues manually.  Eventually will have features added to track and analyze health conditions against weather patterns.
 
 # Who:
 
-## Who this is applicable to
+## Applicable to people with health issues that are affected by the weather.
 
-## History of the origin of who (team/org/person) started, and who (team/org/person) maintains the project
 
 # Why:
 
-## Why this is a applicable
+Adding weather forecasts may help people with weather related health issues better plan activities around bad pain related weather.
 
 # When:
 
-## When it is applicable
+Always
 
 ## When it started
 
-## Release frequency
+Project started in 2010 origionally as a C++ & Qt project on my own time, dropped for a decade and restarted in 2025 as a pyside6 project.
 
 # Where:
 
-## Where this was developed
-
 ## Where this was designed for
+
+This app is designed for anywhere that the US NOAA collects data from.  The app is zip code driven at this time.
 
 # How:
 
 ## How to build & package
 
+Still in the process of building.
+
 ## How to release
+
+No release process yet, project to new.
+
 
 ## How CI/CD works
 
+No CI/CD at this time.
+
 # References:
+
+## weather affecting health
+
+
+
 
 # FAQ:
 
