@@ -18,9 +18,9 @@ import pyqtgraph as pg
 # pip install noaa_sdk
 from noaa_sdk import NOAA
 
-sys.path.append("../..")
+sys.path.append("..")
 
-from wnp.config import DEFAULT_DEGREES_UNITS
+from config import DEFAULT_DEGREES_UNITS
 
 
 class NoaaObservationRun():
