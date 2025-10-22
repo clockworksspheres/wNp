@@ -29,7 +29,11 @@ This app is designed for anywhere that the US NOAA collects data from.  The app 
 
 ## How to build & package
 
-Still in the process of building.
+using venv to create a python environment for development of the project.
+
+Will be using PyInstaller to create an app or integrated binary, depending on the operating system.
+
+Still in the process of building the build pipeline.  BuildScripts borrowed from another project.  Only the build.macos.sh functions to build the dev environment.
 
 ## How to release
 
@@ -39,23 +43,5 @@ No release process yet, project to new.
 ## How CI/CD works
 
 No CI/CD at this time.
-
-# References:
-
-## weather affecting health
-
-
-
-
-# FAQ:
-
-## Q.
-
-### A.
-
-## Q.
-
-### A.
-
 
 
