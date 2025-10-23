@@ -18,7 +18,7 @@ from lib.NoaaObservationRun import NoaaObservationRun
 
 
 class GraphWindow(QWidget):
-    def __init__(self, title, x, y=None):
+    def __init__(self, title, x, y=None, xtitle='X', ytitle='Value'):
         super().__init__()
         self.setWindowTitle(title)
         self.setGeometry(100, 100, 600, 400)
@@ -36,8 +36,8 @@ class GraphWindow(QWidget):
             y = x 
             self.plot_widget.plot(y, pen='b')
         self.plot_widget.setTitle(title)
-        self.plot_widget.setLabel('left', 'Value')
-        self.plot_widget.setLabel('bottom', 'X')
+        self.plot_widget.setLabel('left', ytitle)
+        self.plot_widget.setLabel('bottom', xtitle)
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -143,7 +143,7 @@ class MainWindow(QMainWindow):
 
         wtime, data = self.get_live_observations('temperature', pzip, country)
 
-        graph = GraphWindow(f"Temperature: {pzip}", wtime, data)
+        graph = GraphWindow(f"Temperature: {pzip}", wtime, data, 'Time', 'Temperature')
         graph.show()
         self.graph_windows.append(graph)
 
@@ -156,7 +156,7 @@ class MainWindow(QMainWindow):
 
         wtime, data = self.get_live_observations('relativeHumidity', pzip, country)
 
-        graph = GraphWindow(f"Relative Humidity: {pzip}", wtime, data)
+        graph = GraphWindow(f"Relative Humidity: {pzip}", wtime, data, 'Time', 'Relative Humidity')
         graph.show()
         self.graph_windows.append(graph)
 
@@ -169,7 +169,7 @@ class MainWindow(QMainWindow):
 
         wtime, data = self.get_live_observations('barometricPressure', pzip, country)
 
-        graph = GraphWindow(f"Barometric Pressure: {pzip}", wtime, data)
+        graph = GraphWindow(f"Barometric Pressure: {pzip}", wtime, data, 'Time', 'Barometric Pressure')
         graph.show()
         self.graph_windows.append(graph)
 
@@ -182,7 +182,7 @@ class MainWindow(QMainWindow):
 
         wtime, data = self.get_live_observations('dewpoint', pzip, country)
 
-        graph = GraphWindow(f"Dewpoint: {pzip}", wtime, data)
+        graph = GraphWindow(f"Dewpoint: {pzip}", wtime, data, 'Time', 'Dewpoint')
         graph.show()
         self.graph_windows.append(graph)
 
