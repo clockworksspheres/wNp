@@ -146,7 +146,10 @@ class NoaaObservationRun():
                     else:
                         container[i]['temperature'] = float(observation['temperature']['value'])
                 except TypeError as err:
-                    container[i]['temperature'] = 0
+                    if i <= 1:
+                        container[i]['temperature'] = 0
+                    else:
+                        container[i]['temperature'] = container[i-1]['temperature']
 
                 try:
                     if DEFAULT_DEGREES_UNITS == 'C' and observation['dewpoint']['unitCode'][-1] == 'F':
@@ -156,17 +159,26 @@ class NoaaObservationRun():
                     else:
                         container[i]['dewpoint'] = float(observation['dewpoint']['value'])
                 except TypeError as err:
-                    container[i]['dewpoint'] = 0
+                    if i <= 1:
+                        container[i]['dewpoint'] = 0
+                    else:
+                        container[i]['dewpoint'] = container[i-1]['dewpoint']
 
                 try:
                     container[i]['relativeHumidity'] = float(observation['relativeHumidity']['value'])
                 except TypeError as err:
-                    container[i]['relativeHumidity'] = 0
+                    if i <= 1:
+                        container[i]['relativeHumidity'] = 0
+                    else:
+                        container[i]['relativeHumidity'] = container[i-1]['relativeHumidity']
 
                 try:
                     container[i]['barometricPressure'] = float(observation['barometricPressure']['value'])
                 except TypeError as err:
-                    container[i]['barometricPressure'] = 0
+                    if i <= 1:
+                        container[i]['barometricPressure'] = 0
+                    else:
+                        container[i]['barometricPressure'] = container[i-1]['barometricPressure']
 
             if int(i) == int(samples):
                 break
