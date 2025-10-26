@@ -12,6 +12,7 @@ from collections import OrderedDict
 # pip install PySide6
 from PySide6.QtWidgets import QApplication, QMainWindow
 import pyqtgraph as pg
+from cachetools import cached, TTLCache
 
 #####
 # NOAA library to access weather data
@@ -28,6 +29,7 @@ class NoaaObservationRun():
         self.n = NOAA()
         self.setFile2Load()
 
+    @cached(cache=TTLCache(maxsize=100, ttl=900))
     def singleshot(self, pzip, country='US'):
         observation = {}
         observations = self.n.get_observations(pzip, country)
@@ -57,6 +59,7 @@ class NoaaObservationRun():
     def setFile2Load(self, filename='data.json'):
         self.file2load = filename
 
+    @cached(cache=TTLCache(maxsize=100, ttl=900))
     def fordaysRaw(self, pzip, country='US', samples=10, timestamp=False, live=True):
         i = 1 
         observation = {}
