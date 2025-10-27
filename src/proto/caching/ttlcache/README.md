@@ -113,4 +113,62 @@ This pattern is ideal for caching API responses, database queries, or any I/O-bo
 -----
 
 
+# **Used Method - Second of the two below**
+
+## python @cached class method decorator ttl cachetools classmethod
+
+Quick Answer
+To implement a time-to-live (TTL) cache for a class method using the cachetools library in Python, you can use the @cachetools.cachedmethod decorator. This decorator allows you to cache the results of class methods with a specified TTL, ensuring that cached values expire after a defined period.
+
+The @cachetools.cachedmethod decorator takes a function that returns a cache object, typically a TTLCache, and applies caching to the decorated method. For example, you can define a class with a class method that uses a TTLCache with a maximum size and a TTL in seconds:
+
+import cachetools
+
+class ExampleClass:
+    EXP = 2
+
+    @classmethod
+    @cachetools.cachedmethod(lambda cls: cachetools.TTLCache(maxsize=128, ttl=600))
+    def example_classmethod(cls, i):
+        return i * cls.EXP
+
+In this example, example_classmethod will cache its results for 600 seconds (10 minutes), and the cache can hold up to 128 entries. The cache is tied to the class instance via the lambda cls: ... function, which provides the cache object for each class method call. This approach ensures that the cached results are valid for the specified TTL and are automatically removed after expiration.
+
+It is important to note that when using cachetools for multiple methods within a class, it is recommended to use separate cache instances to avoid key conflicts that could lead to incorrect results. Additionally, the TTLCache class from cachetools supports both maximum size and TTL settings, making it suitable for managing cached data with time-based expiration.
+
+
+## example on how to use the class
+
+Finished
+Here’s an example of how to use @cachetools.cachedmethod with a class method:
+
+from cachetools import TTLCache, cachedmethod
+import time
+
+class DataProcessor:
+    def __init__(self):
+        # Create a TTL cache with max 100 items, TTL of 5 seconds
+        self.cache = TTLCache(maxsize=100, ttl=5)
+
+    @cachedmethod(lambda self: self.cache)
+    def process_data(self, value):
+        print(f"Processing {value}...")  # Simulate expensive operation
+        time.sleep(1)
+        return value * 2
+
+# Usage
+processor = DataProcessor()
+
+print(processor.process_data(10))  # "Processing 10..." + returns 20
+print(processor.process_data(10))  # Returns 20 directly from cache (no print)
+time.sleep(6)
+print(processor.process_data(10))  # "Processing 10..." again (cache expired)
+
+This demonstrates caching per instance, where results are reused within the TTL window. The lambda self: self.cache provides the cache object for each method call.
+
+
+-----
+
+
+
 
