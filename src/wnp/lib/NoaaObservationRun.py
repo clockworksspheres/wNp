@@ -1,18 +1,16 @@
 #!/usr/bin/env -S python -u
 
 import faulthandler
-import traceback
-import sys 
+#import traceback
+#import sys 
 import json
 from collections import OrderedDict
 
 #####
-# Graphics libraries
-# pip install pyqtgraph
-# pip install PySide6
-from PySide6.QtWidgets import QApplication, QMainWindow
-import pyqtgraph as pg
-from cachetools import cached, TTLCache, cachedmethod
+# 3rd party library for caching 
+#   https://github.com/tkem/cachetools/
+#   https://pypi.org/project/cachetools/
+from cachetools import TTLCache, cachedmethod
 
 #####
 # NOAA library to access weather data
@@ -57,8 +55,29 @@ class NoaaObservationRun():
 
         return stuff
 
-    def setFile2Load(self, filename='data.json'):
-        self.file2load = filename
+    def setFileName(self, filename='data.json'):
+        """
+        setter for file name managed by this class
+        """
+        self.filename = filename
+
+    def getAndSaveSingleShot(self, pzip, country='US'):
+        """
+        acquire a singleshot data, and save it to a file.
+        """
+        data = self.singleshot(pzip, country)
+
+        with open(self.filename, "w") as outfile:
+            json.dump(data, outfile, indent=4)
+
+    def getAndSaveFordaysRaw(self, pzip, country='US', samples=10, timestamp=False, live=True):
+        """
+        acquire fordaysRaw data and save it to a file.
+        """
+        data = self.fordaysRaw(pzip, country='US', samples=10, timestamp=False, live=True)
+
+        with open(self.filename, "w") as outfile:
+            json.dump(data, outfile, indent=4)
 
     @cachedmethod(lambda self: self.cache)
     def fordaysRaw(self, pzip, country='US', samples=10, timestamp=False, live=True):
