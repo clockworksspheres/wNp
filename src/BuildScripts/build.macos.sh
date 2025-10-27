@@ -15,6 +15,7 @@ if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
 
    pip install --upgrade pip
    pip install noaa-sdk
+   pip install cachetools
    pip install pyqtgraph
    pip install PySide6
    #pip install PyInstaller
