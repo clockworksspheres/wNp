@@ -12,7 +12,7 @@ from collections import OrderedDict
 # pip install PySide6
 from PySide6.QtWidgets import QApplication, QMainWindow
 import pyqtgraph as pg
-from cachetools import cached, TTLCache
+from cachetools import cached, TTLCache, cachedmethod
 
 #####
 # NOAA library to access weather data
@@ -28,8 +28,9 @@ class NoaaObservationRun():
     def __init__(self):
         self.n = NOAA()
         self.setFile2Load()
+        self.cache=TTLCache(maxsize=100, ttl=900)
 
-    @cached(cache=TTLCache(maxsize=100, ttl=900))
+    @cachedmethod(lambda self: self.cache)
     def singleshot(self, pzip, country='US'):
         observation = {}
         observations = self.n.get_observations(pzip, country)
@@ -59,7 +60,7 @@ class NoaaObservationRun():
     def setFile2Load(self, filename='data.json'):
         self.file2load = filename
 
-    @cached(cache=TTLCache(maxsize=100, ttl=900))
+    @cachedmethod(lambda self: self.cache)
     def fordaysRaw(self, pzip, country='US', samples=10, timestamp=False, live=True):
         i = 1 
         observation = {}
@@ -79,8 +80,10 @@ class NoaaObservationRun():
         # print(json.dumps(observation, indent=4))
         return observation
 
+    @cachedmethod(lambda self: self.cache)
     def fordays(self, pzip, country='US', samples=10, timestamp=False, live=True):
         observation = {}
+        print(f"Processing zipcode: {pzip}, country: {country}")
         if live:
             observations = self.n.get_observations(pzip, country)
         else:
@@ -185,7 +188,7 @@ class NoaaObservationRun():
 
             if int(i) == int(samples):
                 break
-        print(f"{json.dumps(container, indent=4)}")
+        #print(f"{json.dumps(container, indent=4)}")
 
         return container
 
@@ -211,7 +214,7 @@ if __name__ == "__main__":
     njob = NoaaObservationRun()
     if args.raw:
         containers = njob.fordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
-        print(f"{json.dumps(containers, indent=3)}")
+        # print(f"{json.dumps(containers, indent=3)}")
     else:
         containers = njob.fordays(args.zipcode, args.country, args.samples, args.timestamp)
         print("###############################")

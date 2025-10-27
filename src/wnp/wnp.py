@@ -100,6 +100,9 @@ class MainWindow(QMainWindow):
         # Store graph windows to keep reference
         self.graph_windows = []
 
+        # instanciate an NoaaObservationRun object
+        self.njob = NoaaObservationRun()
+
     def get_live_observations(self, y='temperature', pzip='39503', country='US', samples=40, timestamp=False):
         # pzip = self.zipLineEdit.text()
         # pzip = pzip.strip()
@@ -109,8 +112,7 @@ class MainWindow(QMainWindow):
         self.wtime = []
 
         try:
-            njob = NoaaObservationRun()
-            observations = njob.fordays(pzip, country='US', samples=2000)
+            observations = self.njob.fordays(pzip, country='US', samples=2000)
 
             self.data = []
             self.wtime = []
