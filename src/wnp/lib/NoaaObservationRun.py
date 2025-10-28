@@ -56,6 +56,20 @@ class NoaaObservationRun():
 
         return stuff
 
+    @cachedmethod(lambda self: self.cache)
+    def singleshotRaw(self, pzip, country='US'):
+        observation = {}
+        observations = self.n.get_observations(pzip, country)
+        stuff = {}
+        for observation in observations:
+            #print(json.dumps(observation, indent=4))
+            stuff = observation
+            break
+
+        print(f"{json.dumps(stuff, indent=4)}")
+
+        return stuff
+
     def setFileName(self, filename='data.json'):
         """
         setter for file name managed by this class
@@ -67,6 +81,15 @@ class NoaaObservationRun():
         acquire a singleshot data, and save it to a file.
         """
         data = self.singleshot(pzip, country)
+
+        with open(self.filename, "w") as outfile:
+            json.dump(data, outfile, indent=4)
+
+    def getAndSaveSingleShotRaw(self, pzip, country='US'):
+        """
+        acquire a singleshot data, and save it to a file.
+        """
+        data = self.singleshotRaw(pzip, country)
 
         with open(self.filename, "w") as outfile:
             json.dump(data, outfile, indent=4)
@@ -230,7 +253,8 @@ if __name__ == "__main__":
     parser.add_argument("-z", "--zipcode", default="83402", help="zipcode to gather data on")
     parser.add_argument("-l", "--loadFile", default='', help="raw json data file to load, rather than acquire live data")
     parser.add_argument("-f", "--saveJsonData", default='', help="save raw json data to file")
-    parser.add_argument("-o", "--saveOneshotJsonData", default='', help="save raw oneshot json data to file")
+    parser.add_argument("-o", "--saveOneshotJsonData", default='', help="save oneshot json data to file")
+    parser.add_argument("-O", "--saveOneshotRawJsonData", default='', help="save raw oneshot json data to file")
     parser.add_argument("-c", "--country", default='US', help="country to gather data on")
     parser.add_argument("-s", "--samples", default='2000', help="number of samples to chart")
     parser.add_argument("-T", "--timestamp", action='store_true', help="timestamp")
@@ -243,6 +267,12 @@ if __name__ == "__main__":
     if args.saveJsonData:
         njob.setFileName(args.saveJsonData)
         containers = njob.getAndSaveFordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
+
+    if args.saveOneshotRawJsonData:
+        njob.setFileName(args.saveOneshotRawJsonData)
+        containers = njob.getAndSaveSingleShotRaw(args.zipcode, args.country)
+
+        print(f"{json.dumps(containers, indent=4)}")
 
     if args.saveOneshotJsonData:
         njob.setFileName(args.saveOneshotJsonData)
