@@ -66,7 +66,7 @@ class NoaaObservationRun():
             stuff = observation
             break
 
-        print(f"{json.dumps(stuff, indent=4)}")
+        # print(f"{json.dumps(stuff, indent=4)}")
 
         return stuff
 

@@ -232,23 +232,29 @@ if __name__ == '__main__':
         njob.setFileName(args.saveJsonData)
         containers = njob.getAndSaveFordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
 
-    if args.saveOneshotJsonData:
+    elif args.saveOneshotRawJsonData:
+        njob.setFileName(args.saveOneshotRawJsonData)
+        containers = njob.getAndSaveSingleShotRaw(args.zipcode, args.country)
+
+        print(f"{json.dumps(containers, indent=4)}")
+
+    elif args.saveOneshotJsonData:
         njob.setFileName(args.saveOneshotJsonData)
         containers = njob.getAndSaveSingleShot(args.zipcode, args.country)
 
         print(f"{json.dumps(containers, indent=4)}")
 
-        if args.raw:
-            containers = njob.fordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
-            print(f"{json.dumps(containers, indent=3)}")
-        else:
-            containers = njob.fordays(args.zipcode, args.country, args.samples, args.timestamp)
-            print("###############################")
-            print("### ForDays Observation run ###")
-            print(f"{json.dumps(containers, indent=4)}")
-            stuff = njob.singleshot(args.zipcode, args.country)
-            print("##################################")
-            print("### SingleShot Observation run ###")
-            print(f"{json.dumps(stuff, indent=4)}")
-            print("##################################")
+    elif args.raw:
+        containers = njob.fordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
+        print(f"{json.dumps(containers, indent=3)}")
+    else:
+        containers = njob.fordays(args.zipcode, args.country, args.samples, args.timestamp)
+        print("###############################")
+        print("### ForDays Observation run ###")
+        print(f"{json.dumps(containers, indent=4)}")
+        stuff = njob.singleshot(args.zipcode, args.country)
+        print("##################################")
+        print("### SingleShot Observation run ###")
+        print(f"{json.dumps(stuff, indent=4)}")
+        print("##################################")
 
