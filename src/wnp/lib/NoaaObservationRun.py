@@ -240,7 +240,7 @@ if __name__ == "__main__":
 
     njob = NoaaObservationRun()
 
-    if args.raw and args.saveJsonData:
+    if args.saveJsonData:
         njob.setFileName(args.saveJsonData)
         containers = njob.getAndSaveFordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
 

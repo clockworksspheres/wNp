@@ -200,8 +200,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="A simple script to demonstrate argparse.")
     # parser.add_argument("-g", "--gui", action="store_true", help="Start the GUI - the default option.  If this option is given, all others will be ignored.")
     parser.add_argument("-z", "--zipcode", default="83402", help="zipcode to gather data on")
-    parser.add_argument("-f", "--file2load", default='data.json', help="raw json data file to load, rather than acquire live data")
     parser.add_argument("-c", "--country", default='US', help="country to gather data on")
+    parser.add_argument("-l", "--loadFile", default='', help="raw json data file to load, rather than acquire live data")
+    parser.add_argument("-f", "--saveJsonData", default='', help="save raw json data to file")
+    parser.add_argument("-o", "--saveOneshotJsonData", default='', help="save raw oneshot json data to file")
     parser.add_argument("-s", "--samples", default='2000', help="number of samples to chart")
     parser.add_argument("-T", "--timestamp", action='store_true', help="timestamp")
     parser.add_argument("-R", "--raw", action='store_true', help="dump raw observation data to console")
@@ -224,6 +226,17 @@ if __name__ == '__main__':
     else:
 
         njob = NoaaObservationRun()
+
+    if args.saveJsonData:
+        njob.setFileName(args.saveJsonData)
+        containers = njob.getAndSaveFordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
+
+    if args.saveOneshotJsonData:
+        njob.setFileName(args.saveOneshotJsonData)
+        containers = njob.getAndSaveSingleShot(args.zipcode, args.country)
+
+        print(f"{json.dumps(containers, indent=4)}")
+
         if args.raw:
             containers = njob.fordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
             print(f"{json.dumps(containers, indent=3)}")
