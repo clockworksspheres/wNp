@@ -244,13 +244,9 @@ if __name__ == "__main__":
         njob.setFileName(args.saveJsonData)
         containers = njob.getAndSaveFordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
 
-    if args.raw and args.saveOneshotJsonData:
+    if args.saveOneshotJsonData:
         njob.setFileName(args.saveOneshotJsonData)
         containers = njob.getAndSaveSingleShot(args.zipcode, args.country)
-
-    if args.raw and args.saveJsonData:
-        njob.setFileName(args.saveJsonData)
-        containers = njob.fordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
 
         print(f"{json.dumps(containers, indent=4)}")
 
