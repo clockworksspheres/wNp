@@ -2,7 +2,7 @@
 
 import faulthandler
 #import traceback
-#import sys 
+import sys 
 import json
 from collections import OrderedDict
 
@@ -17,15 +17,16 @@ from cachetools import TTLCache, cachedmethod
 # pip install noaa_sdk
 from noaa_sdk import NOAA
 
-#sys.path.append("..")
+# sys.path.append("..")
 
-from . config import DEFAULT_DEGREES_UNITS
+if __name__ != "__main__":
+    from . config import DEFAULT_DEGREES_UNITS
 
 
 class NoaaObservationRun():
     def __init__(self):
         self.n = NOAA()
-        self.setFile2Load()
+        self.setFileName()
         self.cache=TTLCache(maxsize=100, ttl=900)
 
     @cachedmethod(lambda self: self.cache)
@@ -74,7 +75,7 @@ class NoaaObservationRun():
         """
         acquire fordaysRaw data and save it to a file.
         """
-        data = self.fordaysRaw(pzip, country='US', samples=10, timestamp=False, live=True)
+        data = self.fordaysRaw(pzip, country='US')
 
         with open(self.filename, "w") as outfile:
             json.dump(data, outfile, indent=4)
@@ -216,13 +217,20 @@ if __name__ == "__main__":
 
     import argparse
 
+    sys.path.append("../..")
+
+    # from wnp.lib.config import DEFAULT_DEGREES_UNITS
+    from config import DEFAULT_DEGREES_UNITS
+    
     #####
     # Enable traceback on segmentation fault...
     faulthandler.enable()
 
     parser = argparse.ArgumentParser(description="A simple script to demonstrate argparse.")
     parser.add_argument("-z", "--zipcode", default="83402", help="zipcode to gather data on")
-    parser.add_argument("-f", "--file2load", default='data.json', help="raw json data file to load, rather than acquire live data")
+    parser.add_argument("-l", "--loadFile", default='', help="raw json data file to load, rather than acquire live data")
+    parser.add_argument("-f", "--saveJsonData", default='', help="save raw json data to file")
+    parser.add_argument("-o", "--saveOneshotJsonData", default='', help="save raw oneshot json data to file")
     parser.add_argument("-c", "--country", default='US', help="country to gather data on")
     parser.add_argument("-s", "--samples", default='2000', help="number of samples to chart")
     parser.add_argument("-T", "--timestamp", action='store_true', help="timestamp")
@@ -231,6 +239,21 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     njob = NoaaObservationRun()
+
+    if args.raw and args.saveJsonData:
+        njob.setFileName(args.saveJsonData)
+        containers = njob.getAndSaveFordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
+
+    if args.raw and args.saveOneshotJsonData:
+        njob.setFileName(args.saveOneshotJsonData)
+        containers = njob.getAndSaveSingleShot(args.zipcode, args.country)
+
+    if args.raw and args.saveJsonData:
+        njob.setFileName(args.saveJsonData)
+        containers = njob.fordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
+
+        print(f"{json.dumps(containers, indent=4)}")
+
     if args.raw:
         containers = njob.fordaysRaw(args.zipcode, args.country, args.samples, args.timestamp)
         # print(f"{json.dumps(containers, indent=3)}")
