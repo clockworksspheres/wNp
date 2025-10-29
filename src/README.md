@@ -10,7 +10,7 @@ must use the -t switch to specify which board to load:
 
 ```
 cd <wnp-root-dir>/src
-eisenban -t wnp.board
+eisenban -t wnpBoard
 ```
 
 to see the current kanban board state
