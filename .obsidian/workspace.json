@@ -171,6 +171,8 @@
   },
   "active": "25a0c13450941d77",
   "lastOpenFiles": [
+    "src/data/oneshotRaw_39503.json",
+    "src/data/oneshotRaw.json",
     "src/proto/caching/README.md",
     "src/data/rawDataFile_39503.json",
     "src/rawDataFile_39503.json",
@@ -181,7 +183,6 @@
     "src/oneshotFile.json",
     "src/rawDataFile.json",
     "src/wnp/__pycache__/__init__.cpython-313.pyc",
-    "src/wnp/__pycache__",
     "src/proto/caching/ttlcache/README.md",
     "src/packenv/lib/python3.13/site-packages/pip-25.3.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
     "src/packenv/lib/python3.13/site-packages/pip/_vendor/idna/LICENSE.md",
