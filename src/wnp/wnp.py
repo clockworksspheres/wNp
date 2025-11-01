@@ -188,6 +188,37 @@ class MainWindow(QMainWindow):
         graph.show()
         self.graph_windows.append(graph)
 
+    def show_graphAll(self):
+
+        pzip = self.zipLineEdit.text()
+        pzip = pzip.strip()
+        country = self.countryLineEdit.text()
+        country = country.strip
+
+        wtime, data = self.get_live_observations('temperature', pzip, country)
+
+        graph = GraphWindow(f"Temperature: {pzip}", wtime, data, 'Time', 'Temperature')
+        graph.show()
+        self.graph_windows.append(graph)
+
+        wtime, data = self.get_live_observations('relativeHumidity', pzip, country)
+
+        graph = GraphWindow(f"Relative Humidity: {pzip}", wtime, data, 'Time', 'Relative Humidity')
+        graph.show()
+        self.graph_windows.append(graph)
+
+        wtime, data = self.get_live_observations('barometricPressure', pzip, country)
+
+        graph = GraphWindow(f"Barometric Pressure: {pzip}", wtime, data, 'Time', 'Barometric Pressure')
+        graph.show()
+        self.graph_windows.append(graph)
+
+        wtime, data = self.get_live_observations('dewpoint', pzip, country)
+
+        graph = GraphWindow(f"Dewpoint: {pzip}", wtime, data, 'Time', 'Dewpoint')
+        graph.show()
+        self.graph_windows.append(graph)
+
 
 if __name__ == '__main__':
 
