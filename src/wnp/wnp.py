@@ -77,12 +77,14 @@ class MainWindow(QMainWindow):
         button2 = QPushButton("Relative Humidity")
         button3 = QPushButton("Barometric Pressure")
         button4 = QPushButton("Dewpoint")
+        button5 = QPushButton("Graph All Four")
 
         # Connect buttons to functions
         button1.clicked.connect(self.show_graph1)
         button2.clicked.connect(self.show_graph2)
         button3.clicked.connect(self.show_graph3)
         button4.clicked.connect(self.show_graph4)
+        button5.clicked.connect(self.show_graphAll)
 
         # Add buttons to layout
         #vlayout.addWidget(hOneLayout)
@@ -94,6 +96,7 @@ class MainWindow(QMainWindow):
         vlayout.addWidget(button2)
         vlayout.addWidget(button3)
         vlayout.addWidget(button4)
+        vlayout.addWidget(button5)
 
         self.setLayout(vlayout)
 
