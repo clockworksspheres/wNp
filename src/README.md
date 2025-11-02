@@ -2,7 +2,7 @@
 
 ## What is wNp
 
-# Eisenban Kanban board - wnp.board
+# Eisenban Kanban board - wnpBoard
 
 using the app found at:  https://github.com/clockworksspheres/eisenban
 
