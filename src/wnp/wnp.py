@@ -8,7 +8,7 @@ import json
 #####
 # Importing 3rd party libraries - must be installed
 # separately
-import numpy as np
+#import numpy as np
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QLineEdit
 import pyqtgraph as pg
 
@@ -53,10 +53,10 @@ class MainWindow(QMainWindow):
         #hTwoLayout = QHBoxLayout(vlayout)
 
         # Create sample data for different graphs
-        self.data1 = np.sin(np.linspace(0, 10, 100))
-        self.data2 = np.cos(np.linspace(0, 10, 100))
-        self.data3 = np.random.random(100)
-        self.data4 = np.linspace(0, 5, 100) ** 2
+        # self.data1 = np.sin(np.linspace(0, 10, 100))
+        # self.data2 = np.cos(np.linspace(0, 10, 100))
+        # self.data3 = np.random.random(100)
+        # self.data4 = np.linspace(0, 5, 100) ** 2
 
         # Create line edit and title
         self.zipLabel = QLabel("Zip Code")
