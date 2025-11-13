@@ -13,7 +13,8 @@ from noaa_sdk import NOAA
 import time
 
 # --- CONFIG ---
-ZIP_CODE = "39503"
+#ZIP_CODE = "39503"
+ZIP_CODE = "83402"
 COUNTRY = "US"
 UPDATE_INTERVAL = 60
 HISTORY_SIZE = 10
@@ -233,13 +234,18 @@ class WeatherApp(MDApp):
         try:
             observations = self.noaa.get_observations(ZIP_CODE, COUNTRY)
             for obs in observations:
-                temp_f = obs.get('temperature', {}).get('value')
-                if temp_f is not None:
-                    temp_c = (float(temp_f) - 32) * 5 / 9
+                temp = obs.get('temperature', {}).get('value')
+                if temp is not None:
+                    temp_scale = obs.get('temperature', {}).get('unitCode').split(':')[1]
+                    if temp_scale == 'degC':
+                        temp_f = ((float(temp) +32) * 9/5)
+                    else:
+                        temp_f = temp 
+                    # temp_c = (float(temp_f) - 32) * 5 / 9
                     humidity = float(obs.get('relativeHumidity', {}).get('value', 0))
                     pressure_pa = obs.get('barometricPressure', {}).get('value', 0)
                     pressure_hpa = float(pressure_pa) / 100 if pressure_pa else 0
-                    return temp_c, humidity, pressure_hpa
+                    return temp_f, humidity, pressure_hpa
         except Exception as e:
             print(f"NOAA Error: {e}")
         return None

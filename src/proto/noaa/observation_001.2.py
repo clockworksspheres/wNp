@@ -8,7 +8,7 @@ def doit():
 
     n = NOAA()
 
-    observations = n.get_observations('11365','US')
+    observations = n.get_observations('83402','US')
     stuff = {}
     tags = ['timestamp', 'temperature', 'dewpoint', 'relativeHumidity', 'barometricPressure']
     for observation in observations:
