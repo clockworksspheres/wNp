@@ -39,10 +39,6 @@ Download and install positron from:  https://positron.posit.co/download.html
 
 To be able to use the command line tools above, you will need to close the powershell window, then open a new powershell window.
 
-### Python libraries the project depends on
-
-### By way of build scripts
-
 ## Useful software to consider installing
 
 * drawio
