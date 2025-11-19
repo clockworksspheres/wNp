@@ -2,9 +2,13 @@
 
 # Directories
 
-## Design_Thoughts
+## Design-Thoughts
 
-## Proto
+## linuxNotes
+
+## macosNotes
+
+## windowsNotes
 
 # References
 
