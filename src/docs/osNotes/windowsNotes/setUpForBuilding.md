@@ -33,8 +33,9 @@ This will be tested and modified as necessary once there is time for someone to 
 choco install python312
 choco install git
 choco install obsidian
-choco install positron
 ```
+
+Download and install positron from:  https://positron.posit.co/download.html
 
 To be able to use the command line tools above, you will need to close the powershell window, then open a new powershell window.
 
@@ -56,9 +57,41 @@ To be able to use the command line tools above, you will need to close the power
 
 ### With Chocolatey 
 
+```
+choco install drawio
+choco install brave
+choco install slack
+choco install umbrello
+choco install meld
+choco install qtcreator
+choco install qt6-base-dev
+choco install zotero
+```
 
+to see if a piece of software is available via chocolatey, you can do:
+
+```
+choco search softwareName
+```
+
+like searching for the brave browser:
+
+```
+choco search brave
+```
+
+To make sure the software you are searching for is the right software, run:
+
+``` 
+choco info brave
+```
+
+to find out a variety of information on the brave chocolatey package.
 
 ### Without Chocolatey
+
+Vym - Download and install the vym exe installer from: https://sourceforge.net/projects/vym/files/
+
 
 ## Set up git to connect to github with ssh
 
