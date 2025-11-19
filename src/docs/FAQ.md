@@ -20,5 +20,15 @@
 
 **A.** The proto directory is like the wild west of code examples.  Some may work, and some may not.  Some may just not work as expected.  Once useage of internal libraries are stable, the stable proto files will be copied/moved to the examples directory. 
 
+**Q. Are there OS spec issues programming this project?**
+
+**A.** Very little if any.  
+
+**Q. What are the differences in the setup of the build and run environments for each OS?**
+
+**A.** Each OS has different requirements with installing the build environment for the project.  The project uses software package managers as much as possible to handle installation and configuration of the build and run environments.
+
+Please look in the [[src/docs/osNotes/README.md]] and child directories for OS specific information.
+
 # References
 

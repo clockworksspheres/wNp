@@ -13,7 +13,21 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/docs/README.md",
+                "file": "src/docs/FAQ.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "FAQ"
+            }
+          },
+          {
+            "id": "d4aea5f72e08a4b3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "src/docs/osNotes/README.md",
                 "mode": "source",
                 "source": true
               },
@@ -21,7 +35,8 @@
               "title": "README"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -169,8 +184,23 @@
       "bases:Create new base": false
     }
   },
-  "active": "25a0c13450941d77",
+  "active": "d4aea5f72e08a4b3",
   "lastOpenFiles": [
+    "src/docs/FAQ.md",
+    "src/docs/osNotes/README.md",
+    "src/docs/README.md",
+    "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
+    "src/docs/osNotes/windowsNotes/runBuildScript.md",
+    "src/docs/osNotes/windowsNotes/chocolateyInstallAndProblems.md",
+    "src/docs/osNotes/windowsNotes/chocolateyAsUser.md",
+    "src/docs/osNotes/windowsNotes",
+    "src/docs/osNotes/macosNotes/runBuildScript.md",
+    "src/docs/osNotes/macosNotes/setUpForBuilding.md",
+    "src/docs/osNotes/macosNotes",
+    "src/docs/osNotes/linuxNotes/setUpForBuilding.md",
+    "src/docs/osNotes/linuxNotes/runBuildScript.md",
+    "src/docs/osNotes/linuxNotes",
+    "src/docs/osNotes",
     "src/docs/macosNotes/setUpForBuilding.md",
     "src/docs/windowsNotes/setUpForBuilding.md",
     "src/docs/linuxNotes/setUpForBuilding.md",
@@ -187,16 +217,11 @@
     "src/proto/caching/README.md",
     "src/data/rawDataFile_39503.json",
     "src/rawDataFile_39503.json",
-    "src/data/oneshotFile_39503.json",
-    "src/data/rawDataFile.json",
-    "src/data/oneshotFile.json",
-    "src/data",
     "src/proto/caching/ttlcache/README.md",
     "src/packenv/lib/python3.13/site-packages/pip-25.3.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
     "src/packenv/lib/python3.13/site-packages/pip/_vendor/idna/LICENSE.md",
     "src/packenv/lib/python3.13/site-packages/~ip-25.2.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
     "README.md",
-    "src/proto/caching/timeit/README.md",
     "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/wander-24px@2x.png",
     "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/wander-24px.png",
     "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/wander-16px.png",
@@ -206,9 +231,6 @@
     "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/trail-emitter-24px@2x.png",
     "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/trail-emitter-24px.png",
     "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/trail-emitter-16px.png",
-    "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/target-direction-24px@2x.png",
-    "src/packenv/lib/python3.13/site-packages/numpy/random/LICENSE.md",
-    "src/packenv/lib/python3.13/site-packages/idna-3.11.dist-info/licenses/LICENSE.md",
-    "src/packenv/lib/python3.13/site-packages/pip-25.2.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md"
+    "src/packenv/lib/python3.13/site-packages/PySide6/Qt/qml/QtQuick3D/Particles3D/designer/images/target-direction-24px@2x.png"
   ]
 }
