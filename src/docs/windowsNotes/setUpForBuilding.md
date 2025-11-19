@@ -14,11 +14,11 @@ Installing tools to set up for building the project.
 
 ### By way of build scripts
 
-## Useful tools to install
+## Useful software to consider installing
 
 ### With Chocolatey 
 
 ### Without Chocolatey
 
-## Set up git to connect to github with ssh.
+## Set up git to connect to github with ssh
 
