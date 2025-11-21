@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
+                "file": "src/docs/osNotes/macosNotes/setUpForBuilding.md",
                 "mode": "source",
                 "source": true
               },
@@ -185,9 +185,9 @@
   },
   "active": "25a0c13450941d77",
   "lastOpenFiles": [
+    "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
     "src/docs/osNotes/linuxNotes/setUpForBuilding.md",
     "src/docs/osNotes/macosNotes/setUpForBuilding.md",
-    "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
     "src/docs/FAQ.md",
     "src/docs/osNotes/windowsNotes/chocolateyAsUser.md",
     "src/docs/osNotes/windowsNotes/chocolateyInstallAndProblems.md",
