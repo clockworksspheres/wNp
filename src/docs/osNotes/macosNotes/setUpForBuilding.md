@@ -39,7 +39,7 @@ brew install positron
 Pyside6 doesn't support the latest version of python.
 
 ``` sh
-pyenv install 3.12.12 # or other/similar specific version
+pyenv install 3.12.12 # or other/similar specific older version
 pyenv global 3.12.12. # to set that version as the user system specific version of python
 ```
 
