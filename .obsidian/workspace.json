@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/docs/osNotes/windowsNotes/chocolateyInstallAndProblems.md",
+                "file": "src/docs/FAQ.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "chocolateyInstallAndProblems"
+              "title": "FAQ"
             }
           }
         ],
@@ -186,16 +186,16 @@
   },
   "active": "d4aea5f72e08a4b3",
   "lastOpenFiles": [
+    "src/docs/osNotes/macosNotes/setUpForBuilding.md",
     "src/docs/osNotes/windowsNotes/chocolateyAsUser.md",
-    "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
     "src/docs/osNotes/windowsNotes/chocolateyInstallAndProblems.md",
+    "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
     "src/docs/FAQ.md",
     "src/docs/osNotes/README.md",
     "src/docs/README.md",
     "src/docs/osNotes/windowsNotes/runBuildScript.md",
     "src/docs/osNotes/windowsNotes",
     "src/docs/osNotes/macosNotes/runBuildScript.md",
-    "src/docs/osNotes/macosNotes/setUpForBuilding.md",
     "src/docs/osNotes/macosNotes",
     "src/docs/osNotes/linuxNotes/setUpForBuilding.md",
     "src/docs/osNotes/linuxNotes/runBuildScript.md",

@@ -30,5 +30,35 @@
 
 Please look in the [[src/docs/osNotes/README.md]] and child directories for OS specific information.
 
+**Q. What python packages are being used by this project?**
+
+**A.** Python packages being used can be found in the build scripts:
+
+* pyside6
+* noaa_sdk
+* cachetools
+* pyqtgraph
+* pywin32 (on Windows)
+
+Looking to include (as project grows and as needed):
+* pyinstaller  (create an "app" or "onefile app")
+* pyinstaller-hooks-contrib (if needed - with pyinstaller)
+* packaging
+
+Eventually may switch from pyside6 to kivy, maybe beeware(toga) as the graphical interface to make it easier to have graphics interfaces on mobile devices as well as desktop.  There is no official support for pyside6 on mobile devices, and it can be used on Android with difficulty and is experimental on iOS.
+
+Alternatives for Mobile Python GUIs:
+
+|Framework|Android|iOS|Notes|
+|---|---|---|---|
+|**PySide6**|Strong|Emerging|Qt-based, best for desktop-to-mobile ports.|
+|**Kivy**|Excellent|Excellent|Touch-focused, easier deployment via Buildozer.|
+|**BeeWare (Toga)**|Good|Good|Native look-and-feel, but steeper learning curve.|
+|**PyQt6**|Similar to PySide6|Similar to PySide6|Near-identical to PySide6 (LGPL vs. GPL licensing).|
+
+Kivy is also used for cross platform desktop systems as well.
+
 # References
+
+* Information for the question "What python packages are being used by this project?" was collected from chatGPT.com and grok.com, based on the question - "can pyside6 work on mobile devices?".
 
