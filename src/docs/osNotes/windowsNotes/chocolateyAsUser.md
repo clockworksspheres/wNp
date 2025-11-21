@@ -4,6 +4,8 @@ Yes, you can run Chocolatey as a non-administrator user, but it requires specifi
 
 For non-admin users to install software via Chocolatey without elevated privileges, the Chocolatey Agent Service must be installed and configured. This service runs under a local administrator account (by default, `ChocolateyLocalAdmin`) and handles package installations on behalf of non-admin users. To enable this, you can install the Chocolatey Agent and configure it with the following commands:
 
+**NOTE:** chocolatey-agent is only available with the business addition of chocolatey.
+
 ```
 choco install chocolatey-agent -y
 choco feature disable --name=showNonElevatedWarnings
