@@ -1,4 +1,4 @@
-# Set Up For Building
+# Set Up For Building on macOS
 
 ## Install the macos Command Line Tools
 

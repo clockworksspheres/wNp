@@ -1,4 +1,4 @@
-# Set Up For Building
+# Set Up For Building on Windows
 
 Installing tools to set up for building the project.
 
