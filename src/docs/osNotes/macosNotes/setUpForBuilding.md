@@ -43,7 +43,7 @@ pyenv install 3.12.12 # or other/similar specific version
 pyenv global 3.12.12. # to set that version as the user system specific version of python
 ```
 
-you may will need to restart your shell for this version of python to be recognized.  
+you may need to restart your shell for this version of python to be recognized.  
 
 ## Useful software to consider installing
 
