@@ -50,7 +50,7 @@ pyenv global 3.12.12. # to set that version as the user system specific version 
 * brave browser (or other favorite browser)
 * slack or other 'community software' like pidgin or discord (for OS specific communities)
 * vym
-* umbrello  (if available - )
+* umbrello  (if available)
 * pytest
 * meld
 * qtcreator
