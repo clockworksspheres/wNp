@@ -53,17 +53,18 @@ or git will change all the \*nix lf's to crlf's making all files have an extra l
 
 ## Useful software to consider installing
 
-* drawio
 * brave browser (or other favorite browser)
-* slack or other 'community software' like pidgin or discord (for OS specific communities)
-* vym (if available)
-* umbrello
-* pytest
-* meld
+* drawio
 * geany
+* meld
+* pytest
 * qtcreator
 * rsync
+* slack or other 'community software' like pidgin or discord (for OS specific communities)
 * tree
+* umbrello
+* vscode
+* vym (if available)
 * webex
 * zoom
 * zotero
@@ -73,13 +74,14 @@ or git will change all the \*nix lf's to crlf's making all files have an extra l
 ```
 choco install drawio
 choco install brave
-choco install slack
-choco install umbrello
 choco install meld
 choco install qtcreator
 choco install qt6-base-dev
 choco install rsync
+choco install slack
 choco install tree
+choco install umbrello
+choco install vscode
 choco install webex
 chco install tree
 choco install zotero
@@ -109,6 +111,17 @@ to find out a variety of information on the brave chocolatey package.
 
 Vym - Download and install the vym exe installer from: https://sourceforge.net/projects/vym/files/
 
+Download and install CMake from: https://cmake.org/download/ (restart any powershell windows that are open, to be able to use cmake)
+
+Download and install Qt6 - open source - https://www.qt.io/download-qt-installer-oss (one has to make an account and agree to the terms of service)
+
+### From the Microsoft Store
+
+A few other possible editors from the Microsoft Store:
+
+* Code::Blocks
+* Visual Studio Code
+* Visual Studio Community
 
 ## Set up git to connect to github with ssh
 
