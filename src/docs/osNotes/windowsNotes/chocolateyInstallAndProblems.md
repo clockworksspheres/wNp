@@ -46,3 +46,7 @@ To delete the current version of chocolatey in an administrative powershell wind
 ```
 Remove-Item -Path "C:\ProgramData\chocolatey" -Recurse -Force
 ```
+
+---
+
+If none of the above works, factory reset your windows box, keeping personal files, and go to the [[src/docs/osNotes/windowsNotes/setUpForBuilding|setUpForBuilding]] document to properly install chocolaty, and tools.
