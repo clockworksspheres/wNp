@@ -80,10 +80,10 @@ choco install qt6-base-dev
 choco install rsync
 choco install slack
 choco install tree
-choco install umbrello
 choco install vscode
+choco install umbrello
 choco install webex
-chco install tree
+choco install zoom
 choco install zotero
 ```
 
