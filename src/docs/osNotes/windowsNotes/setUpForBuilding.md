@@ -25,6 +25,7 @@ This will be tested and modified as necessary once there is time for someone to 
 * python (not the latest version as pyside6 doesn't work with it)
 * git
 * obsidian
+* less
 * favorite editor (project prefers positron)
 
 ### With Chocolaty
@@ -32,6 +33,7 @@ This will be tested and modified as necessary once there is time for someone to 
 ```
 choco install python312
 choco install git
+choco install less
 choco install obsidian
 ```
 
@@ -39,7 +41,7 @@ Download and install positron from:  https://positron.posit.co/download.html
 
 To be able to use the command line tools above, you will need to close the powershell window, then open a new powershell window.
 
-Git and python should now be in the administrative shell path and work fine now.
+Git, less and python should now be in the administrative shell path and work fine now.
 
 Run:
 
