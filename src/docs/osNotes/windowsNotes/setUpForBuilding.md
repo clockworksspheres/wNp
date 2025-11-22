@@ -109,7 +109,7 @@ to find out a variety of information on the brave chocolatey package.
 
 ### Without Chocolatey
 
-Vym - Download and install the vym exe installer from: https://sourceforge.net/projects/vym/files/
+Vym - Download and install the vym exe installer from: https://sourceforge.net/projects/vym/files/ - if the latest .exe is very far out of date, you can go into the Development directory and install the exe in there - but be aware that is an EXPERIMENTAL version.
 
 Download and install CMake from: https://cmake.org/download/ (restart any powershell windows that are open, to be able to use cmake)
 

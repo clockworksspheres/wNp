@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/proto/kivy/README.md",
+                "file": "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "setUpForBuilding"
             }
           }
         ]
@@ -171,8 +171,8 @@
   },
   "active": "79f7cd186ad3137b",
   "lastOpenFiles": [
-    "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
     "src/proto/kivy/README.md",
+    "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
     "src/proto/kivy/kivyenv/Lib/site-packages/PIL/_imaging.cp312-win_amd64.pyd",
     "src/proto/kivy/kivyenv/Lib/site-packages/kivymd-1.2.0.dist-info/licenses/LICENSE",
     "src/proto/kivy/kivyenv/Lib/site-packages/kivymd-1.2.0.dist-info/WHEEL",
