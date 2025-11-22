@@ -16,7 +16,7 @@ To use chocolatey, close the powershell window, and open a new admin powershell 
 
 ## Set up Chocolatey to run as a User
 
-AI generated instructions for setting Chocolatey up to be used in a user environment - - [[chocolateyAsUser]]
+AI generated instructions for setting Chocolatey up to be used in a user environment - - [[chocolateyAsUser]] **NOTE** you need Chocolatey for Business to make those instructions work.
 
 This will be tested and modified as necessary once there is time for someone to go through the document.
 
@@ -49,7 +49,7 @@ Run:
 git config --global core.autocrlf false
 ```
 
-or git will change all the \*nix lf's to crlf's making all files have an extra line between everything in linux and macos.  Windows does not need crlf's, git just likes to be helpful and re-arrange everything for you on Windows.
+or git will change all the \*nix lf's to crlf's making all files have an extra line between everything on linux and macos.  Windows does not need crlf's, git just likes to be helpful and re-arrange everything for you on Windows.
 
 ## Useful software to consider installing
 
