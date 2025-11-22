@@ -60,6 +60,7 @@ or git will change all the \*nix lf's to crlf's making all files have an extra l
 * umbrello
 * pytest
 * meld
+* geany
 * qtcreator
 * zotero
 
