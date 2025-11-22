@@ -18,7 +18,7 @@ To use chocolatey, close the powershell window, and open a new admin powershell 
 
 AI generated instructions for setting Chocolatey up to be used in a user environment - - [[chocolateyAsUser]] **NOTE** you need Chocolatey for Business to make those instructions work.
 
-This will be tested and modified as necessary once there is time for someone to go through the document.
+Setting up chocolatey to run as a user will be tested and modified as necessary once we have access to Chocolatey for Business and there is time for someone to go through the document.
 
 ## Install software required for the project
 
@@ -62,6 +62,10 @@ or git will change all the \*nix lf's to crlf's making all files have an extra l
 * meld
 * geany
 * qtcreator
+* rsync
+* tree
+* webex
+* zoom
 * zotero
 
 ### With Chocolatey 
@@ -74,6 +78,10 @@ choco install umbrello
 choco install meld
 choco install qtcreator
 choco install qt6-base-dev
+choco install rsync
+choco install tree
+choco install webex
+chco install tree
 choco install zotero
 ```
 

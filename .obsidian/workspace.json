@@ -170,5 +170,28 @@
     }
   },
   "active": "79f7cd186ad3137b",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "src/proto/kivy/kivyenv/Lib/site-packages/PIL/_imaging.cp312-win_amd64.pyd",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd-1.2.0.dist-info/licenses/LICENSE",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd-1.2.0.dist-info/WHEEL",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd-1.2.0.dist-info/top_level.txt",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd-1.2.0.dist-info/RECORD",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd-1.2.0.dist-info/REQUESTED",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd-1.2.0.dist-info/METADATA",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd-1.2.0.dist-info/INSTALLER",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd-1.2.0.dist-info/licenses",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd-1.2.0.dist-info/entry_points.txt",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd-1.2.0.dist-info",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd/images/logo/kivymd-icon-512.png",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd/images/logo/kivymd-icon-256.png",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd/images/logo/kivymd-icon-128.png",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd/images/yellow.png",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd/images/transparent.png",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd/images/red.png",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd/images/folder.png",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd/images/green.png",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd/images/black.png",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivymd/images/blue.png",
+    "src/proto/kivy/kivyenv/Lib/site-packages/kivy/tools/image-testsuite/README.md"
+  ]
 }
