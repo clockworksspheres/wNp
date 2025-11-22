@@ -39,6 +39,16 @@ Download and install positron from:  https://positron.posit.co/download.html
 
 To be able to use the command line tools above, you will need to close the powershell window, then open a new powershell window.
 
+Git and python should now be in the administrative shell path and work fine now.
+
+Run:
+
+```
+git config --global core.autocrlf false
+```
+
+or git will change all the \*nix lf's to crlf's making all files have an extra line between everything in linux and macos.  Windows does not need crlf's, git just likes to be helpful and re-arrange everything for you on Windows.
+
 ## Useful software to consider installing
 
 * drawio
