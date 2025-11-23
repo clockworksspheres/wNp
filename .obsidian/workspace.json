@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "src/README.md",
                 "mode": "source",
                 "source": true
               },
@@ -171,6 +171,7 @@
   },
   "active": "01d5d7264dd71ae1",
   "lastOpenFiles": [
+    "README.md",
     "src/docs/osNotes/windowsNotes/setUpForBuilding.md"
   ]
 }
