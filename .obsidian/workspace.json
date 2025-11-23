@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/docs/osNotes/linuxNotes/setUpForBuildingOnDebianLinux.md",
+                "file": "src/docs/osNotes/linuxNotes/setUpForBuildingOnUbuntuLinux.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "setUpForBuildingOnDebianLinux"
+              "title": "setUpForBuildingOnUbuntuLinux"
             }
           }
         ]
@@ -171,10 +171,10 @@
   },
   "active": "01d5d7264dd71ae1",
   "lastOpenFiles": [
-    "src/docs/osNotes/linuxNotes/setUpForBuilding.md",
-    "src/docs/osNotes/linuxNotes/setUpForBuildingOnDebianLinux.md",
-    "src/docs/osNotes/linuxNotes/setUpForBuildingOnUbuntuLinux.md",
     "src/docs/osNotes/linuxNotes/setUpForBuildingOnRockyLinux.md",
+    "src/docs/osNotes/linuxNotes/setUpForBuildingOnDebianLinux.md",
+    "src/docs/osNotes/linuxNotes/setUpForBuilding.md",
+    "src/docs/osNotes/linuxNotes/setUpForBuildingOnUbuntuLinux.md",
     "src/docs/osNotes/README.md",
     "src/docs/FAQ.md",
     "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
