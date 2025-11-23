@@ -1,8 +1,10 @@
 # install kivy environment
 
 ```
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 python -m venv kivyenv
-pip install kivy kivymd noaa-sdk requests
+.\kivyenv\Scripts\Activate.ps1
+pip install kivy kivymd noaa-sdk requests cachetools pyqtgraph
 ```
 
 
