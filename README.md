@@ -39,7 +39,9 @@ Still in the process of building the build pipeline.  BuildScripts borrowed from
 
 Will be using PyInstaller to create an app or integrated binary, depending on the operating system.
 
-Linux and Windows build scripts not yet tested.
+macOS, Linux and Windows build scripts to set up the build environment are tested.
+
+Pyinstaller spec files and builds to create either 'onefile' or apps for each OS has not been flushed out yet - they are borrowed from another clockworksspheres project.
 
 ## How to release
 

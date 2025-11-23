@@ -1,6 +1,6 @@
 # Set Up For Building on Windows
 
-Installing tools to set up for building the project.
+Installing tools to set up for building the project.  Some help gained from AI, either grok.com or copilot.com.
 
 ## Install Chocolatey
 
@@ -124,6 +124,8 @@ A few other possible editors from the Microsoft Store:
 * Visual Studio Community
 
 ## Set up git to connect to github with ssh
+
+
 
 ## Setting up the terminal and powershell to start and your user home
 

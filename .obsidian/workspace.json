@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "setUpForBuilding"
+              "title": "README"
             }
           }
         ]
@@ -170,5 +170,7 @@
     }
   },
   "active": "01d5d7264dd71ae1",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "src/docs/osNotes/windowsNotes/setUpForBuilding.md"
+  ]
 }
