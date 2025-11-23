@@ -58,6 +58,18 @@ Alternatives for Mobile Python GUIs:
 
 Kivy is also used for cross platform desktop systems as well.
 
+**Q. Does this work in Windows Home?**
+
+**A.** the script works on Window Home, but the build environment is trouble to set up.  Notes for setting up the build environment are here:  [[src/docs/osNotes/windowsNotes/setUpForBuilding|setUpForBuilding]]
+
+**Q. How do I set up the build environment for each OS?**
+
+**A.** Check out the directories in the src/docs/osNotes project directory.  In each osNotes directory, there is is a notes directory for each OS, and in there, a "setUpForBuilding" document for that OS.
+
+* for macOS: [[src/docs/osNotes/macosNotes/setUpForBuilding|setUpForBuilding]]
+* for Linux: [[src/docs/osNotes/linuxNotes/setUpForBuilding|setUpForBuilding]]
+* for Windows: [[src/docs/osNotes/windowsNotes/setUpForBuilding|setUpForBuilding]]
+
 # References
 
 * Information for the question "What python packages are being used by this project?" was collected from chatGPT.com and grok.com, based on the question - "can pyside6 work on mobile devices?".
