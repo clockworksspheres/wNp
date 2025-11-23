@@ -91,3 +91,21 @@ Vym - Download and install the vym exe installer from: https://sourceforge.net/p
 
 ## Set up git to connect to github with ssh
 
+## Setting up the terminal and powershell to start and your user home
+
+
+
+```
+$USERNAME = <your username here>
+icacls $PROFILE /grant "$env:USERNAME":RX
+icacls $PROFILE /grant "$env:USERNAME":RX
+icacls $PROFILE /remove:g Guests
+notepad $PROFILE
+```
+
+and put the following into that file:
+
+```
+
+
+```
