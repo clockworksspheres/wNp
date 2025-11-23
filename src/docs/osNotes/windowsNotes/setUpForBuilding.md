@@ -140,6 +140,8 @@ notepad $PROFILE
 and put the following into that file:
 
 ```
-
-
+Set-Location $HOME
 ```
+
+and that should fix your command shells.
+
