@@ -44,11 +44,6 @@ Download positron from: https:/github.com/posit-dev/positron/releases
 sudo dpkg -i Positron-25.11.0-234-arm64.deb # (on arm64 - macos VM)
 ```
 
-# Installing python modules
-
-```
-```
-
 # Cannot install on arm64
 
 * obsidian
