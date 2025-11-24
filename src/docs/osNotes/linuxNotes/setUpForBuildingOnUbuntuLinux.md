@@ -18,6 +18,8 @@ sudo apt install python3-tk
 sudo apt install python3-pip
 sudo apt install python3-pytest
 sudo apt install python3-venv
+sudo apt install vim
+sudo apt install gitd
 sudo apt install dia dia-common dia-shapes dia2code
 sudo apt install slack
 sudo apt install vym
@@ -34,7 +36,9 @@ sudo apt install snapd
 sudo snap install core
 sudo snap refresh core
 sudo snap install brave
-sudo ln -s /snap/bin/brave /usr/local/bin/brave
+sudo snap install obsidian --classic # does not work on arm platforms
+sudo snap install drawio # does not work on arm platforms
+sudo snap install zotero-snap # does not work on arm platforms, must be executed as zotero-snap
 ```
 # Installing
 
