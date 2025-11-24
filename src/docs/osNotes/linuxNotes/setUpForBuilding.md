@@ -6,12 +6,12 @@ Each type of linux OS is slightly different, with different package managers and
 
 * python (not the latest version as pyside6 doesn't work with it)
 * git
-* obsidian
+* obsidian (not available on arm systems)
 * favorite editor (project prefers positron)
 
 ## Useful software to consider installing
 
-* drawio
+* drawio (not available on arm systems)
 * brave browser (or other favorite browser)
 * slack or other 'community software' like pidgin or discord (for OS specific communities)
 * vym (if available)
@@ -19,7 +19,7 @@ Each type of linux OS is slightly different, with different package managers and
 * pytest
 * meld
 * qtcreator
-* zotero
+* zotero (not available on arm systems)
 
 ## Set up git to connect to github with ssh
 
