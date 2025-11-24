@@ -22,6 +22,7 @@ sudo apt install dia dia-common dia-shapes dia2code
 sudo apt install slack
 sudo apt install vym
 sudo apt install umbrello
+sudo ln -s /usr/bin/umbrello5 /usr/local/bin/umbrello
 sudo apt install meld
 sudo apt install qtcreator
 ```
@@ -29,7 +30,11 @@ sudo apt install qtcreator
 # Installing via snap
 
 ```
+sudo apt install snapd
+sudo snap install core
+sudo snap refresh core
 sudo snap install brave
+sudo ln -s /snap/bin/brave /usr/local/bin/brave
 ```
 # Installing
 
@@ -59,7 +64,7 @@ sudo apt install openssh-server
 sudo ufw allow ssh
 sudo systemctl enable --now ssh
 sudo systemctl status ssh
-sudo vim /etc/sshd_config
+sudo vim /etc/ssh/sshd_config
 ```
 
 make sure the line  ``` PermitRootLogin no ``` is in the file.  if not, put it in near the *PermitRootLogin* line is in.
@@ -79,6 +84,13 @@ comment out:
 
 ```
 #KbdInteractiveAuthentication no
+```
+
+run:
+
+```
+sudo systemctl restart ssh
+ip addr show
 ```
 
 reboot
@@ -107,8 +119,8 @@ ssh-add ~/.ssh/<privatekey>
 cd <clockworksspheres-dir-root>
 ```
 
-Now you should be able to download via ssh your github project.
+Now you should be able to download via ssh your github project, that you have rights to.
 
 ```
-git clone git@github.com/clockworksspheres/wNp
+git clone git@github.com:clockworksspheres/wNp
 ```
