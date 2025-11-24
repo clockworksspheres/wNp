@@ -14,12 +14,14 @@ Installing "kde-standard" will take some time.
 
 ```
 sudo ln -s /usr/bin/python3 /usr/local/bin/python
+sudo apt install python3-tk
 sudo apt install python3-pip
+sudo apt install python3-pytest
+sudo apt install python3-venv
 sudo apt install dia dia-common dia-shapes dia2code
 sudo apt install slack
 sudo apt install vym
 sudo apt install umbrello
-sudo apt install python3-pytest
 sudo apt install meld
 sudo apt install qtcreator
 ```
