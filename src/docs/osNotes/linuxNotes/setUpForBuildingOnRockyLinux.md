@@ -19,6 +19,15 @@ pip install pytest
 ```
 dnf install meld
 ```
+---
+
+# This is as far as I could get with the Rocky 10 install
+
+My python apps still work with the above packages installed.
+
+Some SELINUX errors of needing a newer version than the mirror provides for installing snapd
+
+---
 
 # Installing
 
