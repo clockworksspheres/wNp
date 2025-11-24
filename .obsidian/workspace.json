@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
+                "file": "src/docs/osNotes/linuxNotes/setUpForBuildingOnUbuntuLinux.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for setUpForBuilding"
+              "title": "Backlinks for setUpForBuildingOnUbuntuLinux"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
+                "file": "src/docs/osNotes/linuxNotes/setUpForBuildingOnUbuntuLinux.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from setUpForBuilding"
+              "title": "Outgoing links from setUpForBuildingOnUbuntuLinux"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
+                "file": "src/docs/osNotes/linuxNotes/setUpForBuildingOnUbuntuLinux.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of setUpForBuilding"
+              "title": "Outline of setUpForBuildingOnUbuntuLinux"
             }
           }
         ]
@@ -171,15 +171,10 @@
   },
   "active": "01d5d7264dd71ae1",
   "lastOpenFiles": [
-    "src/docs/osNotes/linuxNotes/setUpForBuildingOnRockyLinux.md",
-    "src/docs/osNotes/linuxNotes/setUpForBuildingOnDebianLinux.md",
     "src/docs/osNotes/linuxNotes/setUpForBuilding.md",
     "src/docs/osNotes/linuxNotes/setUpForBuildingOnUbuntuLinux.md",
-    "src/docs/osNotes/README.md",
-    "src/docs/FAQ.md",
     "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
-    "src/docs/README.md",
-    "src/README.md",
-    "README.md"
+    "src/docs/osNotes/linuxNotes/setUpForBuildingOnRockyLinux.md",
+    "src/docs/osNotes/linuxNotes/setUpForBuildingOnDebianLinux.md"
   ]
 }
