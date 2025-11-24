@@ -4,6 +4,7 @@
 Put user in sudoers file
 
 ```
+sudo dnf makecache
 sudo apt install net-tools
 sudo apt install vim
 sudo apt install git
