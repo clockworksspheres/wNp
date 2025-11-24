@@ -18,10 +18,13 @@ sudo apt install python3-tk
 sudo apt install python3-pip
 sudo apt install python3-pytest
 sudo apt install python3-venv
+sudo apt install vim
+sudo apt install gitd
 sudo apt install dia dia-common dia-shapes dia2code
 sudo apt install slack
 sudo apt install vym
 sudo apt install umbrello
+ln -s /usr/bin/umbrello5 /usr/local/bin/umbrello
 sudo apt install meld
 sudo apt install qtcreator
 ```
@@ -30,6 +33,9 @@ sudo apt install qtcreator
 
 ```
 sudo snap install brave
+sudo snap install obsidian --classic # does not work on arm platforms
+sudo snap install drawio # does not work on arm platforms
+sudo snap install zotero-snap # does not work on arm platforms, must be executed as zotero-snap
 ```
 # Installing
 
@@ -59,7 +65,7 @@ sudo apt install openssh-server
 sudo ufw allow ssh
 sudo systemctl enable --now ssh
 sudo systemctl status ssh
-sudo vim /etc/sshd_config
+sudo vim /etc/ssh/sshd_config
 ```
 
 make sure the line  ``` PermitRootLogin no ``` is in the file.  if not, put it in near the *PermitRootLogin* line is in.
