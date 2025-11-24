@@ -19,7 +19,7 @@ if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
    pip install --upgrade pip 
    pip install noaa-sdk
    pip install pyqtgraph
-   pip install PySide6
+   pip install pyside6
    pip install cachetools
 
    #pip install --upgrade pip
@@ -30,7 +30,7 @@ else
    source packenv/bin/activate
 fi
 
-#cp buildScripts/build.ubuntu2024.py312.onefile.spec .
+#cp BuildScripts/build.ubuntu2024.py312.onefile.spec .
 
 #pyinstaller --clean -y build.ubuntu2024.py312.onefile.spec
 #pyinstaller -y build.ubuntu2024.py312.onefile.spec
