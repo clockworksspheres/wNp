@@ -1,0 +1,63 @@
+{
+    "assessment_datetime": "2025-12-21T22:45:20.069308",
+    "formatted_datetime": "Sunday, December 21, 2025 \u2013 10:45 PM",
+    "notes": "Sitting most of the day, diet affected my health today more than weather.",
+    "ratings": [
+        {
+            "body_part": "Head / Migraine",
+            "pain_level": 6
+        },
+        {
+            "body_part": "Neck",
+            "pain_level": 2
+        },
+        {
+            "body_part": "Shoulders",
+            "pain_level": 3
+        },
+        {
+            "body_part": "Upper Back",
+            "pain_level": 1
+        },
+        {
+            "body_part": "Lower Back",
+            "pain_level": 3
+        },
+        {
+            "body_part": "Chest",
+            "pain_level": 0
+        },
+        {
+            "body_part": "Abdomen / Stomach",
+            "pain_level": 0
+        },
+        {
+            "body_part": "Hips",
+            "pain_level": 5
+        },
+        {
+            "body_part": "Left Knee",
+            "pain_level": 1
+        },
+        {
+            "body_part": "Right Knee",
+            "pain_level": 1
+        },
+        {
+            "body_part": "Left Ankle",
+            "pain_level": 3
+        },
+        {
+            "body_part": "Right Ankle",
+            "pain_level": 3
+        },
+        {
+            "body_part": "Hands / Wrists",
+            "pain_level": 4
+        },
+        {
+            "body_part": "Feet",
+            "pain_level": 5
+        }
+    ]
+}
