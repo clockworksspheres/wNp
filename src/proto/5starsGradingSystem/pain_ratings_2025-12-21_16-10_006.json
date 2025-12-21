@@ -1,0 +1,63 @@
+{
+    "assessment_datetime": "2025-12-21T16:10:24.522093",
+    "formatted_datetime": "Sunday, December 21, 2025 \u2013 04:10 PM",
+    "notes": "sitting most of the day, diet really affected pain.",
+    "ratings": [
+        {
+            "body_part": "Head / Migraine",
+            "pain_level": 6
+        },
+        {
+            "body_part": "Neck",
+            "pain_level": 2
+        },
+        {
+            "body_part": "Shoulders",
+            "pain_level": 3
+        },
+        {
+            "body_part": "Upper Back",
+            "pain_level": 1
+        },
+        {
+            "body_part": "Lower Back",
+            "pain_level": 4
+        },
+        {
+            "body_part": "Chest",
+            "pain_level": 0
+        },
+        {
+            "body_part": "Abdomen / Stomach",
+            "pain_level": 0
+        },
+        {
+            "body_part": "Hips",
+            "pain_level": 5
+        },
+        {
+            "body_part": "Left Knee",
+            "pain_level": 1
+        },
+        {
+            "body_part": "Right Knee",
+            "pain_level": 1
+        },
+        {
+            "body_part": "Left Ankle",
+            "pain_level": 3
+        },
+        {
+            "body_part": "Right Ankle",
+            "pain_level": 3
+        },
+        {
+            "body_part": "Hands / Wrists",
+            "pain_level": 4
+        },
+        {
+            "body_part": "Feet",
+            "pain_level": 5
+        }
+    ]
+}
