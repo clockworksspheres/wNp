@@ -1,0 +1,26 @@
+[
+    {
+        "title": "The Shawshank Redemption",
+        "rating": 5
+    },
+    {
+        "title": "The Godfather",
+        "rating": 5
+    },
+    {
+        "title": "Inception",
+        "rating": 4
+    },
+    {
+        "title": "Pulp Fiction",
+        "rating": 4
+    },
+    {
+        "title": "The Matrix",
+        "rating": 3
+    },
+    {
+        "title": "Forrest Gump",
+        "rating": 4
+    }
+]
