@@ -1,6 +1,6 @@
 # How to integrate pain_005.py into another app:
 
-```python
+``` python
 # Example: Integrating the Pain Rating System into Your Existing PySide6 App
 
 # 1. Save the core components as a separate module (e.g., pain_tracker_widget.py)
@@ -129,7 +129,7 @@ class PainTrackerWidget(QWidget):
 ### How to Integrate into Your Existing App
 
 #### Option 1: As a Tab in a QTabWidget
-```python
+``` python
 from PySide6.QtWidgets import QMainWindow, QTabWidget
 from pain_tracker_widget import PainTrackerWidget
 
@@ -150,21 +150,21 @@ class MainWindow(QMainWindow):
 ```
 
 #### Option 2: As a Page in a QStackedWidget
-```python
+``` python
 # Inside your main window setup
 self.stacked_widget.addWidget(PainTrackerWidget())
 # Then switch pages with self.stacked_widget.setCurrentIndex(...)
 ```
 
 #### Option 3: Embedded in a Larger Form
-```python
+``` python
 layout = QVBoxLayout(some_container_widget)
 layout.addWidget(PainTrackerWidget())
 # Add other widgets below/above as needed
 ```
 
 #### Option 4: As a Dialog/Modal Window
-```python
+``` python
 from PySide6.QtWidgets import QDialogButtonBox
 
 def open_pain_tracker():
@@ -197,7 +197,7 @@ Just copy `pain_tracker_widget.py` into your project and import `PainTrackerWidg
 # add recent activity description - pain_006.py
 
 
-```python
+``` python
 import sys
 import json
 from math import pi, cos, sin
