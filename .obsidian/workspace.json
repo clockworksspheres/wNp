@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/proto/starsPainGradingSystem/README.md",
+                "file": "src/docs/osNotes/linuxNotes/windowManagerProblemsOnLinux.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "windowManagerProblemsOnLinux"
             }
           }
         ]
@@ -169,12 +169,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "e11c52e105b64719",
+  "active": "01d5d7264dd71ae1",
   "lastOpenFiles": [
+    "src/docs/osNotes/linuxNotes/setUpForBuildingOnUbuntuLinux.md",
+    "src/docs/osNotes/linuxNotes/windowManagerProblemsOnLinux.md",
+    "src/docs/osNotes/linuxNotes/setUpForBuildingOnDebianLinux.md",
+    "src/proto/starsPainGradingSystem/README.md",
     "src/docs/osNotes/windowsNotes/setUpForBuilding.md",
     "src/docs/osNotes/linuxNotes/setUpForBuildingOnRockyLinux.md",
-    "src/docs/osNotes/linuxNotes/setUpForBuildingOnDebianLinux.md",
-    "src/docs/osNotes/linuxNotes/setUpForBuildingOnUbuntuLinux.md",
     "src/docs/osNotes/linuxNotes/setUpForBuilding.md"
   ]
 }
