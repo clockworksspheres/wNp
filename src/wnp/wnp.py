@@ -15,7 +15,7 @@ import pyqtgraph as pg
 ####
 # loading local libs
 from lib.NoaaObservationRun import NoaaObservationRun
-
+from PainStarDelegate import PainTrackerWidget
 
 class GraphWindow(QWidget):
     def __init__(self, title, x, y=None, xtitle='X', ytitle='Value'):
@@ -78,6 +78,7 @@ class MainWindow(QMainWindow):
         button3 = QPushButton("Barometric Pressure")
         button4 = QPushButton("Dewpoint")
         button5 = QPushButton("Graph All Four")
+        button6 = QPushButton("Pain Survey")
 
         # Connect buttons to functions
         button1.clicked.connect(self.show_graph1)
@@ -85,6 +86,8 @@ class MainWindow(QMainWindow):
         button3.clicked.connect(self.show_graph3)
         button4.clicked.connect(self.show_graph4)
         button5.clicked.connect(self.show_graphAll)
+        button6.clicked.connect(self.pain_survey)
+
 
         # Add buttons to layout
         #vlayout.addWidget(hOneLayout)
@@ -97,6 +100,7 @@ class MainWindow(QMainWindow):
         vlayout.addWidget(button3)
         vlayout.addWidget(button4)
         vlayout.addWidget(button5)
+        vlayout.addWidget(button6)
 
         self.setLayout(vlayout)
 
@@ -222,6 +226,20 @@ class MainWindow(QMainWindow):
         graph.show()
         self.graph_windows.append(graph)
 
+    def pain_survey(self):
+        """
+        """
+        print("\t Attempting to show the pain tracker widget...")
+        widget = PainTrackerWidget()
+        # widget.resize(900, 900)
+        widget.show()
+        # widget.raise_()
+        # widget.activateWindow()
+        self.graph_windows.append(widget)
+
+
+
+
 
 if __name__ == '__main__':
 
@@ -245,19 +263,19 @@ if __name__ == '__main__':
     parser.add_argument("-t", "--tag", default='temperature', help="tag to plot - one of ['temperature', 'barometricPressure', 'relativeHumidity', 'dewpoint']")
     args = parser.parse_args()
 
-try:
-    #####
-    # Must make sure environment is set correctly if OS is Linux
-    # and the window manager is Wayland.  Must be set before 
-    # creating QApplication.  Does not check if X11 is running.
-    if sys.platform.lower().startswith("linux"):
-        logging.info("Found Linux Checking for Wayland")
-        if os.environ.get("WAYLAND_DISPLAY") is not None or \
-           os.environ.get("XDG_SESSION_TYPE") == "wayland":
-            logging.info("Found Wayland, setting QT_QPA_PLATFORM")
-            os.environ["QT_QPA_PLATFORM"] = "xcb"
-except OSError:
-    logging.info("Problem checking for and setting environment variable in linux")
+    try:
+        #####
+        # Must make sure environment is set correctly if OS is Linux
+        # and the window manager is Wayland.  Must be set before 
+        # creating QApplication.  Does not check if X11 is running.
+        if sys.platform.lower().startswith("linux"):
+            logging.info("Found Linux Checking for Wayland")
+            if os.environ.get("WAYLAND_DISPLAY") is not None or \
+            os.environ.get("XDG_SESSION_TYPE") == "wayland":
+                logging.info("Found Wayland, setting QT_QPA_PLATFORM")
+                os.environ["QT_QPA_PLATFORM"] = "xcb"
+    except OSError:
+        logging.info("Problem checking for and setting environment variable in linux")
 
 
     # if len(sys.argv) == 1 or args.gui:

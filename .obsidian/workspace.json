@@ -171,6 +171,10 @@
   },
   "active": "01d5d7264dd71ae1",
   "lastOpenFiles": [
+    "src/wnp/__pycache__/PainStarDelegate.cpython-313.pyc",
+    "src/wnp/__pycache__",
+    "src/wnp/PainStarDelegate.py",
+    "src/proto/starsPainGradingSystem/PainStarDelegate.py",
     "src/docs/osNotes/linuxNotes/setUpForBuildingOnUbuntuLinux.md",
     "src/docs/osNotes/linuxNotes/windowManagerProblemsOnLinux.md",
     "src/docs/osNotes/linuxNotes/setUpForBuildingOnDebianLinux.md",
