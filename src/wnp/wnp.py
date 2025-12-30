@@ -233,12 +233,7 @@ class MainWindow(QMainWindow):
         widget = PainTrackerWidget()
         # widget.resize(900, 900)
         widget.show()
-        # widget.raise_()
-        # widget.activateWindow()
         self.graph_windows.append(widget)
-
-
-
 
 
 if __name__ == '__main__':
