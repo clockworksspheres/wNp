@@ -1,5 +1,6 @@
 # install kivy environment
 
+Windows venv setup
 ```
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 python -m venv kivyenv
