@@ -40,7 +40,7 @@ class test_environment(unittest.TestCase):
     def testGetostype(self):
         tracemalloc.start(10)
         validtypes = 'Red Hat Enterprise Linux|Debian|Ubuntu|CentOS|Fedora|' + \
-                     'openSUSE|Mac OS X|macOS|macos'
+                     'openSUSE|Mac OS X|macOS|Rocky Linux'
         print('OS Type: ' + str(self.to.getostype()))
         self.assertTrue(re.search(validtypes, self.to.getostype()))
 
