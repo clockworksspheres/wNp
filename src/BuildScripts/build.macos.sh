@@ -84,7 +84,7 @@ echo "."
 echo "."
 echo "."
 
-./clean.sh
+#./clean.sh
 echo "."
 echo "."
 echo "."

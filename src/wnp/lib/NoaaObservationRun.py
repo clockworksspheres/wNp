@@ -17,10 +17,10 @@ from cachetools import TTLCache, cachedmethod
 # pip install noaa_sdk
 from noaa_sdk import NOAA
 
-# sys.path.append("..")
+sys.path.append("..")
 
 if __name__ != "__main__":
-    from . config import DEFAULT_DEGREES_UNITS
+    from config import DEFAULT_DEGREES_UNITS
 
 
 class NoaaObservationRun():
@@ -243,7 +243,7 @@ if __name__ == "__main__":
     sys.path.append("../..")
 
     # from wnp.lib.config import DEFAULT_DEGREES_UNITS
-    from config import DEFAULT_DEGREES_UNITS
+    from wnp.config import DEFAULT_DEGREES_UNITS
     
     #####
     # Enable traceback on segmentation fault...
