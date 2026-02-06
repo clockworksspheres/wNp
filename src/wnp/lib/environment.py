@@ -120,7 +120,7 @@ class Environment(object):
         
         '''
 
-        validtypes = ['launchd', 'systemd', 'init', 'upstart']
+        validtypes = ['launchd', 'systemd', 'init', 'upstart', 'windows']
         cmdlocs = ["/usr/bin/ps", "/bin/ps"]
         cmdbase = ""
         cmd = ""
@@ -132,6 +132,14 @@ class Environment(object):
                 cmdbase = cl
         if cmdbase:
             cmd = cmdbase + " -p1"
+        elif not cmdbase:
+            if  sys.platform.startswith('win32'):
+                self.sytemtype = 'windows'
+                if self.systemtype not in validtypes and DEFAULT_LOG_LEVEL >= LogPriority["VERBOSE"]:
+                    print(str(__name__) + ":This system is based on an unknown architecture")
+                elif DEFAULT_LOG_LEVEL >= LogPriority["VERBOSE"]:
+                    print(str(__name__) + ":Determined that this system is based on " + str(self.systemtype) + " architecture")
+                return
 
         try:
 
@@ -141,7 +149,7 @@ class Environment(object):
                 output, _, _ = self.rw.communicate()
                 #cmdoutput = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, close_fds=True, text=True)
                 #outputlines = cmdoutput.stdout.readlines()
-                outputlines = output.split("\n")
+                outputlines = output.splitlines()
                 for line in outputlines:
                     line = str(line)
                     # print("        line: " + str(line))
@@ -378,14 +386,16 @@ class Environment(object):
             description = output[0]
             release = output[1]
             description = description.split()
-            # print description
+            # print(description)
             del description[0]
             description = " ".join(description)
             self.operatingsystem = description
             self.osreportstring = description
             release = release.split()
-            release = release[1]
-            self.osversion = release
+            release = "".join(release[1])
+            self.osversion = "".join(release)
+            #print(f"Description: {"".join(description)}")
+            #print(f"Release: {"".join(release)}")
         elif os.path.exists('/etc/redhat-release'):
             with open('/etc/redhat-release', 'r') as relfile:
                 release = relfile.read()
@@ -543,6 +553,8 @@ class Environment(object):
             self.osfamily = 'solaris'
         elif uname == 'freebsd9':
             self.osfamily = 'freebsd'
+        elif sys.platform.startswith('win32'):
+            self.osfamily = 'windows'
 
     def guessnetwork(self):
         """
