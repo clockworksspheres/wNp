@@ -21,6 +21,7 @@ if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
    pip install pyqtgraph
    pip install pyside6
    pip install cachetools
+   pip install PyInstaller
 
    #pip install --upgrade pip
    #pip3 install PySide6 PyInstaller
@@ -30,11 +31,16 @@ else
    source packenv/bin/activate
 fi
 
-cp BuildScripts/build.ubuntu2404.py312.onefile.spec .
+cp BuildScripts/build.ubuntu2404.py312.onefile.spec wnp
+
+pushd wnp
 
 pyinstaller --clean -y build.ubuntu2404.py312.onefile.spec
 pyinstaller -y build.ubuntu2404.py312.onefile.spec
 rm build.ubuntu2404.py312.onefile.spec
+
+
+popd
 
 popd
 
