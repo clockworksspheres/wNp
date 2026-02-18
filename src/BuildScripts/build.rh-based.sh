@@ -22,25 +22,28 @@ if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
    pip install --upgrade pip 
    pip install noaa-sdk
    pip install pyqtgraph
-   pip install PySide6
+   pip install pyside6
    pip install cachetools
+   pip install PyInstaller
 
    #pip install --upgrade pip
    #pip3 install PySide6 PyInstaller
-   #pip3 install PySide6-Addons
    #pip3 install --upgrade PyInstaller pyinstaller-hooks-contrib
    #pip3 install packaging
 else
    source packenv/bin/activate
 fi
 
-#pushd ..
+cp BuildScripts/build.rh-based.py313.onefile.spec wnp
 
-#cp buildScripts/build.rh-based.py313.onefile.spec .
+pushd wnp
 
-#pyinstaller --clean -y build.rh-based.py313.onefile.spec
-#pyinstaller -y build.rh-based.py313.onefile.spec
-#rm build.rh-based.py313.onefile.spec
+pyinstaller --clean -y build.rh-based.py313.onefile.spec
+pyinstaller -y build.rh-based.py313.onefile.spec
+rm build.rh-based.py313.onefile.spec
+
+
+popd
 
 popd
 
