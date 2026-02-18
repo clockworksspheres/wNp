@@ -18,7 +18,7 @@ if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
    pip install cachetools
    pip install pyqtgraph
    pip install PySide6
-   #pip install PyInstaller
+   pip install PyInstaller
    #pip3 install --upgrade PyInstaller pyinstaller-hooks-contrib
    #pip install psutil
    #pip install sphynx  # documentation tool
@@ -52,8 +52,9 @@ echo "."
 # export PATH=".":$PATH
 
 # pushd ramdisk/ui; python3 compile_uifiles.py; popd
-# cp buildScripts/build.macos.spec .
-# pyinstaller --clean -y build.macos.spec
+cp buildScripts/build.macos.spec wnp
+pushd wnp
+pyinstaller --clean -y build.macos.spec
 
 echo "."
 echo "."
@@ -68,9 +69,9 @@ echo "."
 echo "."
 echo "."
 
-# pyinstaller -y build.macos.spec
-# rm build.macos.spec
-
+pyinstaller -y build.macos.spec
+rm build.macos.spec
+popd
 echo "."
 echo "."
 echo "."
@@ -95,8 +96,8 @@ echo "."
 echo "."
 echo "."
 
-# cp -a ramdisk ./ramdisk-setup.app/Contents/Resources
-# cp -a ramdisk ./dist/ramdisk-setup.app/Contents
+#cp -a wnp ./dist/wNp.app/Contents/Resources
+#cp -a wnp ./dist/wNp.app/Contents
 popd
 # ../dist/ramdisk-setup.app/Contents/MacOS/ramdisk-setup
 

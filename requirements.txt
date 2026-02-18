@@ -1,0 +1,6 @@
+noaa-sdk
+cachetools
+pyqtgraph
+PySide6
+python-jenkins
+pyinstaller

@@ -1,18 +1,22 @@
 # -*- mode: python ; coding: utf-8 -*-
-#
-# https://stackoverflow.com/questions/41870727/pyinstaller-adding-data-files
-#
-# ram image for icon
-# https://icon-icons.com/icon/ram-memory/97234
-# https://creativecommons.org/licenses/by/4.0/
-#
+
 
 a = Analysis(
-    ['ramdisk-setup.py'],
-    pathex=['.', './lib', './ui', './packenv/bin', './packenv/include', './packenv/lib/python3.13/site-packages'],
+    ['wnp.py'],
+    pathex=['.', 'lib', 'ui'],
     binaries=[],
-    datas=[]
-    hiddenimports=['python3','python*','PySide6.*'],
+    datas=[],
+    hiddenimports=[ 
+        'lib.CheckApplicable',
+        'lib.config',
+        'lib.environment',
+        'lib.loggers',
+        'lib.NoaaObservationRun',
+        'lib.run_commands_linux',
+        'lib.run_commands',
+        'lib.singleton',
+        'lib.windows_utilities',
+    ], 
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -25,14 +29,14 @@ pyz = PYZ(a.pure)
 exe = EXE(
     pyz,
     a.scripts,
-    [], 
+    [],
     exclude_binaries=True,
-    name='ramdisk-setup',
-    debug=True,
+    name='wnp',
+    debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False,
+    console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
@@ -46,12 +50,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='org.clockworksspheres.ramdisk',
+    name='wnp',
 )
-app = BUNDLE(
-    coll,
-    name='ramdisk-setup.app',
-    icon='./ramdisk/resources/icns/ram.icns',
-    bundle_identifier='org.clockworksspheres.ramdisk',
-)
-

@@ -12,19 +12,19 @@ import time
 import traceback
 import pathlib
 
-sys.path.append("../..")
+#sys.path.append("../..")
 
-from wnp.config import DEFAULT_LOG_LEVEL, LogPriority
+from config import DEFAULT_LOG_LEVEL, LogPriority
 
 if sys.platform.startswith('win32'):
     import win32api
-    from wnp.lib.windows_utilities import is_windows_process_elevated
+    from windows_utilities import is_windows_process_elevated
 
 else:
     import pwd
 
 try:
-    from wnp.lib.localize import VERSION
+    from localize import VERSION
 except ImportError or AssertionError:
     VERSION = '0.0.1'
 
@@ -32,7 +32,7 @@ except ImportError or AssertionError:
 # FISMACAT must be one of ['high', 'medium', 'low']
 
 try:
-    from wnp.lib.localize import FISMACAT
+    from localize import FISMACAT
 except ImportError or AssertionError:
     FISMACAT = 'low'
 

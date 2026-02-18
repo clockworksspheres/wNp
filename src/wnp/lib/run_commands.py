@@ -21,11 +21,11 @@ import subprocess
 from subprocess import Popen, PIPE
 from subprocess import SubprocessError as SubprocessError
 
-sys.path.append("../..")
+#sys.path.append("../..")
 
-from wnp.lib.loggers import CyLogger
-from wnp.lib.loggers import LogPriority as lp
-from wnp.lib.loggers import MockLogger
+from loggers import CyLogger
+from loggers import LogPriority as lp
+from loggers import MockLogger
 
 
 class OSNotValidForRunWith(BaseException):
