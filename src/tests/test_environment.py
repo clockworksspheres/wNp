@@ -14,15 +14,15 @@ import tracemalloc
 #####
 # Include the parent project directory in the PYTHONPATH
 appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
-appendDir = ("../")
-sys.path.append(appendDir)
+sys.path.append(appendDir + "/wnp")
+
 
 # --- Non-native python libraries in this source tree
-import wnp.lib.environment as environment
+import lib.environment as environment
 
 if sys.platform.startswith('win32'):
     import win32api
-    from wnp.lib.windows_utilities import is_windows_process_elevated
+    from lib.windows_utilities import is_windows_process_elevated
 
 else:
     import pwd

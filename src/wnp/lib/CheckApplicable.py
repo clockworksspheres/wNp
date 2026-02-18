@@ -12,7 +12,7 @@ except ModuleNotFoundError as err:
 #sys.path.append("../../")
 
 #--- non-native python libraries in this source tree
-from loggers import LogPriority
+from lib.loggers import LogPriority
 
 
 class CheckApplicable(object):

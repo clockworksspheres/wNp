@@ -23,9 +23,9 @@ from subprocess import SubprocessError as SubprocessError
 
 #sys.path.append("../..")
 
-from loggers import CyLogger
-from loggers import LogPriority as lp
-from loggers import MockLogger
+from lib.loggers import CyLogger
+from lib.loggers import LogPriority as lp
+from lib.loggers import MockLogger
 
 
 class OSNotValidForRunWith(BaseException):

@@ -10,14 +10,13 @@ from datetime import datetime
 
 #####
 # Include the parent project directory in the PYTHONPATH
-#appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
-#sys.path.append(appendDir)
-sys.path.append("..")
+appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
+sys.path.append(appendDir + "/wnp")
 
 #--- non-native python libraries in this source tree
-from wnp.lib.loggers import CyLogger
-from wnp.lib.loggers import LogPriority as lp
-from wnp.lib.run_commands import RunWith, SetCommandTypeError
+from lib.loggers import CyLogger
+from lib.loggers import LogPriority as lp
+from lib.run_commands import RunWith, SetCommandTypeError
 
 
 class test_run_commands(unittest.TestCase):

@@ -13,9 +13,9 @@ import os
 import re
 import sys
 
-sys.path.append("../..")
+#sys.path.append("../..")
 
-from wnp.lib.libHelperExceptions import NotValidForThisOS
+from lib.libHelperExceptions import NotValidForThisOS
 
 if not sys.platform.startswith("linux"):
     raise NotValidForThisOS("Not Valid For This OS...")
@@ -31,12 +31,12 @@ import traceback
 from subprocess import Popen, PIPE
 from subprocess import SubprocessError as SubprocessError
 
-sys.path.append("../..")
+# sys.path.append("../..")
 
-from ramdisk.lib.loggers import CyLogger
-from ramdisk.lib.loggers import LogPriority as lp
-from ramdisk.lib.loggers import MockLogger
-from ramdisk.lib.getLibc.linuxGetLibc import getLibc
+from lib.loggers import CyLogger
+from lib.loggers import LogPriority as lp
+from lib.loggers import MockLogger
+from lib.getLibc.linuxGetLibc import getLibc
 
 
 class OSNotValidForRunWith(BaseException):

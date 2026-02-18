@@ -13,13 +13,16 @@ import traceback
 import tracemalloc
 from datetime import datetime
 
-sys.path.append("..")
+#####
+# Include the parent project directory in the PYTHONPATH
+appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
+sys.path.append(appendDir + "/wnp")
 
 # --- Non-native python libraries in this source tree
-from wnp.lib.environment import Environment
-from wnp.lib.loggers import CyLogger
-from wnp.lib.loggers import LogPriority
-from wnp.lib.run_commands import RunWith
+from lib.environment import Environment
+from lib.loggers import CyLogger
+from lib.loggers import LogPriority
+from lib.run_commands import RunWith
 
 
 class test_loggers(unittest.TestCase):

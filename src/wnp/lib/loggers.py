@@ -32,8 +32,8 @@ import logging.handlers
 #sys.path.append("../..")
 # from wnp.lib.singleton import Singleton
 # from wnp.config import DEFAULT_LOG_LEVEL
-from config import DEFAULT_LOG_LEVEL
-from singleton import Singleton
+from lib.config import DEFAULT_LOG_LEVEL
+from lib.singleton import Singleton
 
 #from logging.handlers import RotatingFileHandler
 ###############################################################################
