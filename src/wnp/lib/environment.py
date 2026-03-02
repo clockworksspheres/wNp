@@ -12,7 +12,7 @@ import time
 import traceback
 import pathlib
 
-#sys.path.append("../..")
+sys.path.append("./..")
 
 from lib.config import DEFAULT_LOG_LEVEL, LogPriority
 

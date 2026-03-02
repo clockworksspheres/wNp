@@ -29,7 +29,7 @@ import logging.handlers
 # appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-2])
 # sys.path.append(appendDir)
 # sys.path.append("/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-2]))
-#sys.path.append("../..")
+sys.path.append("./..")
 # from wnp.lib.singleton import Singleton
 # from wnp.config import DEFAULT_LOG_LEVEL
 from lib.config import DEFAULT_LOG_LEVEL

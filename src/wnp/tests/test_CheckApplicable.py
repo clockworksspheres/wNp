@@ -12,8 +12,10 @@ from datetime import datetime
 
 #####
 # Include the parent project directory in the PYTHONPATH
-appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
-sys.path.append(appendDir + "/wnp")
+#appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
+#sys.path.append(appendDir + "/wnp")
+sys.path.append("./..")
+sys.path.append("./../..")
 
 #--- non-native python libraries in this source tree
 from lib.loggers import CyLogger
