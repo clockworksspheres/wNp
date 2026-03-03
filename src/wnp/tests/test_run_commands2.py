@@ -1,5 +1,5 @@
 """
-Comprehensive unit tests for wnp/lib/run_commands.py
+Comprehensive unit tests for lib/run_commands.py
 
 Covers:
   - RunWith.__init__                  (logger wiring, default attributes)
@@ -34,6 +34,7 @@ from unittest.mock import MagicMock, Mock, call, patch
 
 import sys
 sys.path.append("./..")
+sys.path.append("./../..")
 
 # ── import the module under test ──────────────────────────────────────────────
 # Adjust the import path if your project layout differs.
@@ -45,10 +46,9 @@ from lib.run_commands import (
     SetCommandTypeError,
     runMyThreadCommand,
 )
-# from wnp.lib.loggers import CyLogger, MockLogger, LogPriority as lp
+# from lib.loggers import CyLogger, MockLogger, LogPriority as lp
 
-from lib.loggers import MockLogger as CyLogger
-# from wnp.lib.loggers import CyLogger
+# from lib.loggers import CyLogger
 from lib.loggers import MockLogger
 from lib.loggers import LogPriority as lp
 from lib.loggers import MockLogger as CyLogger
