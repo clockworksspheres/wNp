@@ -1,4 +1,4 @@
-# tests/test_lib.NoaaObservationRun.py
+# tests/test_NoaaObservationRun.py
 
 import json
 import sys
