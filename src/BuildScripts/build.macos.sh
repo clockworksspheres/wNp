@@ -14,6 +14,9 @@ if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
    source packenv/bin/activate
 
    pip install --upgrade pip
+   pip install astroid
+   pip install pylint
+   pip install pytest
    pip install noaa-sdk
    pip install cachetools
    pip install pyqtgraph
