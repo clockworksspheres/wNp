@@ -11,9 +11,9 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
-from wnp.lib.NoaaObservationRun import NoaaObservationRun
+from wNp.lib.NoaaObservationRun import NoaaObservationRun
 
-from wnp.tests.fixtures.noaa_observations import (
+from wNp.tests.fixtures.noaa_observations import (
     VALID_OBSERVATION,
     CELSIUS_OBSERVATION,
     MISSING_VALUES_OBSERVATION,
