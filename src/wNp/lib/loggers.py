@@ -24,6 +24,8 @@ import datetime
 import traceback
 import logging
 import logging.handlers
+from pathlib import Path
+
 #####
 # Include the parent project directory in the PYTHONPATH - next three lines no good on Windows..
 # appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-2])
@@ -187,10 +189,7 @@ class CyLogger(Singleton):
         """
         Input validation for the logging level
 
-        
-
-        @param level:  (Default value = 30)
- 
+        @param level:  (Default value = 30) 
         """
         
         success = False
@@ -208,10 +207,7 @@ class CyLogger(Singleton):
         If there is a RotatingFileHandler attached to the active logger,
         rotate the log.
         
-        
-
         @param rothandler: 
-
         """
         if self.rotate:
             try:
@@ -253,8 +249,6 @@ class CyLogger(Singleton):
 
         @NOTE: This only sets up the root logger.
 
-        @note: Interface borrowed from Stonix's LogDispatcher.initializeLogs
-        
         """
         self.initialized = True
         if not filename:
@@ -263,6 +257,7 @@ class CyLogger(Singleton):
         self.syslog = syslog
         self.rotate = False
         self.fileHandler = False
+     
         if extension_type in ["none", "epoch", "time", "inc", "sys"]:
             if extension_type == "none":
                 ####
@@ -275,10 +270,9 @@ class CyLogger(Singleton):
             if extension_type == "time":
                 ####
                 # Use a file extension using the datetime library
-                # Get the UTC time and format a time stamp string
+                # Get the time and format a time stamp string
                 # using format YYYYMMDD.HHMMSS.microseconds
-                # 2016/03/11 - Changing to use .now instead of .utcnow
-                # to the time stamp can be correlated with system logs...
+                # so the time stamp can be correlated with system logs...
                 datestamp = datetime.datetime.now()
                 stamp = datestamp.strftime("%Y%m%d.%H%M%S.%f")
                 self.filename = filename + "." + str(stamp) + ".log"
@@ -299,6 +293,9 @@ class CyLogger(Singleton):
         #####
         # Initialize the root logger
         self.logr = logging.getLogger("")
+
+        fileHandler = False
+        rotHandler = False
 
         #####
         # Set logging level for the root logger
@@ -327,7 +324,7 @@ class CyLogger(Singleton):
         #####
         # Add applicable handlers to the logger
         if not self.rotate and self.fileHandler:
-            self.logr.addHandler(fileHandler)
+            self.logr.addHandler(self.fileHandler)
             self.logr.log(LogPriority.DEBUG,"Added FileHandler")
         elif self.rotate:
             self.logr.addHandler(rotHandler)
@@ -359,8 +356,6 @@ class CyLogger(Singleton):
 
         @param *args: 
         @param **kwargs: 
-
-        
         """
         pass
 
@@ -371,8 +366,6 @@ class CyLogger(Singleton):
         Template/interface for setting up a logger
 
         One may add several handlers to one logger.
-
-        
         """
         pass
 
@@ -380,12 +373,9 @@ class CyLogger(Singleton):
 
     def log(self, priority=0, msg="", format="long"):
         """
-        Interface to work similar to Stonix's LogDispatcher.py
 
         @param priority:  (Default value = 0)
-        @param msg:  (Default value = "")
-
-        
+        @param msg:  (Default value = "")        
         """
         pri = str(priority)
         if re.match(r"^\d\d$", pri) and self.validateLevel():
@@ -406,7 +396,7 @@ class CyLogger(Singleton):
         # using local time so the time stamp can be correlated with 
         # system logs...
         datestamp = datetime.datetime.now()
-        timestamp = datestamp.strftime("%Y-%m-%d-%H-%M-%S")
+        timestamp = datestamp.strftime("%Y-%m-%d_%H-%M-%S")
 
         #####
         # Get the name of the program using this library
@@ -463,7 +453,7 @@ class CyLogger(Singleton):
         if isinstance(msg, list):
             msg_list = msg
         elif isinstance(msg, str):
-            first_msg_list = msg.split("\n")
+            first_msg_list = msg.splitlines()
             for mymsg in first_msg_list:
                 msg_list.append(mymsg + "\n")
         elif isinstance(msg, dict):
@@ -503,8 +493,8 @@ class CyLogger(Singleton):
                 try:
                     self.logr.log(validatedLvl, prefix + "WARNING: (" + str(pri) + ") " + str(line))
                 except Exception as err:
-                    print(LogPriority.DEBUG + " : "  + str(traceback.format_exc()))
-                    print(LogPriority.DEBUG + " : " + str(err))
+                    print(str(LogPriority.DEBUG) + " : "  + str(traceback.format_exc()))
+                    print(str(LogPriority.DEBUG) + " : " + str(err))
             elif int(self.lvl) >= 40 and int(self.lvl) < 50:
                 #####
                 # Error
@@ -521,8 +511,6 @@ class CyLogger(Singleton):
 
 class LogPriority(object):
     """
-    Similar to LogPriority in the Stonix project LogDispatcher, only using
-    numbers instead of strings.
 
     """
     DEBUG = int(10)
