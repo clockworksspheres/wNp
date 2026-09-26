@@ -50,8 +50,3 @@ Pyinstaller spec files and builds to create either 'onefile' or apps for each OS
 No release process yet, project to new.
 
 
-## How CI/CD works
-
-No CI/CD at this time.
-
-
